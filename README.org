@@ -1,0 +1,3 @@
+* Org Mode Notebook
+
+This repo is for keeping track of my public work using [[http://orgmode.org/][emacs org mode]]. 

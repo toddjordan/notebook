@@ -1,0 +1,23 @@
+* Meetings
+
+** TODO PR Notes from 8/25
+
+* Tutorial
+
+** TODO Subroutes
+
+- [ ] Solicit Core Team Feedback
+
+** TODO Forms
+
+- [ ] Create Detailed Plan/Tasks in github (or trello)
+
+** TODO move ember-cli-tutorial-style from my repo to ember-learn
+
+* API Docs Emberization
+
+** TODO Move to ember-learn
+
+** TODO Get running locally
+
+** TODO Task it out

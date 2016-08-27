@@ -1,0 +1,108 @@
+* Tasks
+** TODO Create component development education slides
+   DEADLINE: <2016-08-30 Tue>
+- [ ] Create Outline
+- [ ] Create Slides 
+** TODO Setup goto meeting for event(s) [0/4]
+   DEADLINE: <2016-08-29 Mon>
+- [ ] Find site
+- [ ] Reserve event
+- [ ] Set up to record
+- [ ] Update invite
+
+
+* Presentation: Ember Component Development Best Practices
+
+** When to use components
+
+*** Isolation
+
+*** Reuse
+
+** Data Down Actions Up (DDAU)
+
+*** Show a Tree
+
+*** How Data Flows Down
+
+**** One Way Binding
+
+Changes to data at higher levels is cascaded down
+Attributes (attrs)
+
+*** How Actions Bubble Up
+
+- Closure Actions!
+
+**** Bubbling via templates
+
+**** How to do forms
+
+- No two-way binding
+- Use native inputs or one way input helper
+- Use the mut helper
+
+*** How Far Up?
+
+**** Components vs. Controllers vs. Routes
+
+**** Start with all the way up (route), adjust when you need to
+
+*** Planning Your Page
+
+*** Add attrs like they cost $50 a piece
+** Types of Components
+
+*** Presentation Components
+
+Presentation components sole job is to take data and present something to the user.  In this aspect they are purely functional.  Data that gets passed into a presentation component will consistently output the same result.  There is not internal state that affects output.
+
+**** Advantages
+
+*** Coordinating Components
+
+Coordinating components are non-display components that manage state, state that is typically yielded and provided to presentation components.
+
+**** Advantages
+
+*** Block Components
+
+**** Why Block?
+
+- list example
+
+**** Yielding
+
+- Yield is a public contract
+- Contextual Components
+- Don't yield `this`
+
+**** Advantages
+
+***** Can be presentational or coordinating
+
+***** Allows for client customization of display
+
+** Reacting to change
+
+*** Eliminating Observers
+
+**** Why Observers are discouraged
+
+**** Using Computeds
+
+**** Using the Component Lifecycle
+
+**** Exceptions to the rule
+
+*** Services
+
+* Links
+  [[https://poteto.github.io/component-best-practices/][Ember Component Best Practices]]
+  [[http://frontside.io/blog/2016/01/22/functional-templating-in-ember.html][Function Templating in Ember]]
+  [[https://www.youtube.com/watch?v%3Dr2Cq1mUlRk4][Immutability is for you, I, and UI]]
+  [[https://vimeo.com/172995382][Living Immutably]]
+  [[https://www.youtube.com/watch?v%3DvvZEddrClAQ][Observer Tip Jar]]
+  [[%20%20https://www.youtube.com/watch?v%3D6N4qsO22fmw][Composable Components]]
+  [[http://balinterdi.com/2015/09/10/complex-component-design-in-ember-intro.html][Complex Component Design in Ember]]
+

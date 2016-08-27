@@ -1,0 +1,42 @@
+
+* Issues
+
+** TODO Custom Views                                            :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/42
+
+** TODO Cleanup                                                         :bug:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/33
+
+** TODO Render Ember Components                                 :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/23
+
+** TODO Support multiple values on a single field               :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/22
+
+** TODO data binding                                            :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/9
+
+** TODO ember data model as schema                              :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/8
+
+** TODO add custom field types                                  :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/6
+
+** TODO read only render                                        :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/5
+
+** TODO support interactions                                    :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/3
+
+** TODO custom event handler                                    :enhancement:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/2

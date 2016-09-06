@@ -11,17 +11,34 @@
 - [ ] Update invite
 
 
-* Presentation: Ember Component Development Best Practices
+* Outline: Ember Component Development Best Practices
+
+** About Best Practices
+
+- I'm teaching the "ideal" way to do this
+- Ember gives you freedom to break from this
+- Good thing/Bad thing (react)
+- Pragmatism on Legacy Code
+- That said when you can, start with good practices
 
 ** When to use components
 
+You can develop pages without them.
+
 *** Isolation
+
+**** Set inputs/outputs
+**** Busy route template vs clean
 
 *** Reuse
 
+**** May not be reused now, but could be...
+**** Example: current components.
+**** Byproduct of isolation
+
 ** Data Down Actions Up (DDAU)
 
-*** Show a Tree
+Show a Tree Diagram
 
 *** How Data Flows Down
 
@@ -63,6 +80,8 @@ Presentation components sole job is to take data and present something to the us
 
 Coordinating components are non-display components that manage state, state that is typically yielded and provided to presentation components.
 
+Chat Example
+
 **** Advantages
 
 *** Block Components
@@ -97,6 +116,8 @@ Coordinating components are non-display components that manage state, state that
 
 *** Services
 
+Start with pure DDAU.  Incorporate services when you just can't even...
+
 * Links
   [[https://poteto.github.io/component-best-practices/][Ember Component Best Practices]]
   [[http://frontside.io/blog/2016/01/22/functional-templating-in-ember.html][Function Templating in Ember]]
@@ -105,4 +126,6 @@ Coordinating components are non-display components that manage state, state that
   [[https://www.youtube.com/watch?v%3DvvZEddrClAQ][Observer Tip Jar]]
   [[%20%20https://www.youtube.com/watch?v%3D6N4qsO22fmw][Composable Components]]
   [[http://balinterdi.com/2015/09/10/complex-component-design-in-ember-intro.html][Complex Component Design in Ember]]
+  [[https://gist.github.com/samselikoff/1d7300ce59d216fdaf97][Future-proof your ember app (gist)]]
+
 

@@ -1,0 +1,61 @@
+* Testing Types in Ember
+** UI Test Pyramid at InIn
+* Unit Tests
+** Simulating the Run Loop
+*** What is the Run Loop?
+https://guides.emberjs.com/v2.7.0/applications/run-loop/
+http://stackoverflow.com/questions/13597869/what-is-ember-runloop-and-how-does-it-work
+** Simulating the Container
+*** What is the Container?
+https://guides.emberjs.com/v2.7.0/applications/dependency-injection/
+*** Mind your needs
+seeds your registry
+** Stubs and Mocks
+*** What are they and when to use?
+Stub - hard coded returns
+Spies - real functions, keeps track of invokcations
+Mocks - keep track of calls, built in validation capabilities
+*** ember-sinon
+Advanced mocks/stubs/spies
+https://github.com/csantero/ember-sinon
+** Testing Ember Data
+*** moduleForModel
+- Gives you a store service
+- Don't Forget needs for adapters/serializers/models
+*** Connections with HTTP Stubbing
+MockJax or Pretender
+- MockJax overrides JQuery Ajax
+- Pretender overrides XMLHTTPRequest
+** Everything else!
+*** moduleFor
+*** Services
+*** Helpers
+*** Routes
+** Testing with Promises
+*** assert.async
+*** returning promises
+* Integration Tests
+** Providing Data and Actions
+** Stubbing Services
+** Waiting
+* Acceptance Tests
+** Starts and stops the app for each test
+** Fake an authenticated user
+** Out of the Box Helpers
+*** Async Helpers
+*** Sync Helpers
+*** Custom Helpers
+** Fake Server with Mirage
+Users Pretender under the covers
+WIP for InIn
+* Avoiding Brittle Tests
+** assert outcomes, not internals
+** Pure Functions
+** Keep the number of collaborators to a minimum
+** Law of Demeter
+** Don't test the framework
+* Tips For Your workflow
+** Keep your tests as a todo list
+** Tests are much harder after the fact. Let them inform your design.
+* Links
+https://github.com/rwjblue/ember-qunit

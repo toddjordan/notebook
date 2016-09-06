@@ -1,0 +1,149 @@
+* DONE component.js
+
+** DONE Component                                                       :Add:
+
+*** DONE Add Mixins to @uses
+
+** DONE readDomAttr                                                     :Add:
+
+** DONE hasBlock                                                    :Removed:
+
+** DONE hasBlockParams                                              :Removed:
+
+** DONE positionalParams                                                :Add:
+
+** DONE didReceiveAttrs method
+
+** DONE didReceiveAttrs event
+
+** DONE didRender method
+
+** DONE didRender event
+
+** DONE willRender method
+
+** DONE willRender event
+
+** DONE didUpdateAttrs method
+
+** DONE didUpdateAttrs event
+
+** DONE willUpdate method
+
+** DONE willUpdate event
+
+** DONE didUpdate method
+
+** DONE didUpdate event
+
+** DONE isVisible method                                            :Missing:
+
+** DONE instrumentDisplay method                                    :Missing:
+
+** DONE nearestChildOf                                              :Missing:
+
+** DONE nearestInstanceOf                                           :Missing:
+
+* DONE helper.js                                                         :Ok:
+
+* DONE helpers/-html-safe.js                                             :OK:
+
+* DONE helpers/concat.js                                            :Updated:
+
+* DONE helpers/each-in.js                                           :Updated:
+
+* DONE helpers/each.js                                                  :Add:
+
+added doc to each-in.js
+
+* DONE helpers/hash.js                                              :Updated:
+
+* DONE helpers/if-unless.js                                         :Updated:
+
+* DONE helpers/log.js                                               :Updated:
+
+* DONE helpers/query-params.js                                          :Add:
+
+* DONE helpers/with.js                                              :Missing:
+
+* DONE keywords/action.js                                               :Add:
+
+* DONE keywords/component.js                                            :Add:
+
+* DONE keywords/debugger.js                                         :Missing:
+
+* DONE keywords/get.js                                                   :Ok:
+
+In helpers/get.js
+
+* DONE keywords/input.js                                                :Add:
+
+Added to syntax/input.js
+
+* DONE keywords/mount.js                                                :Add:
+
+Added to syntax/mount.js
+
+* DONE keywords/mut.js                                                   :Ok:
+
+* DONE keywords/outlet.js                                               :Add:
+
+Added to syntax/outlet.js
+
+* DONE keywords/partial.js                                          :Missing:
+
+* DONE keywords/readonly.js                                         :Updated:
+
+module only, no doc
+
+* DONE keywords/input.js                                                :Add:
+
+* DONE keywords/outlet.js                                               :Add:
+
+* DONE keywords/render.js                                               :Add:
+
+* DONE keywords/textarea.js                                             :Add:
+
+* DONE keywords/unbound.js                                          :Updated:
+
+Just module
+
+* DONE keywords/with.js                                                  :Ok:
+
+* DONE keywords.js                                                       :Ok:
+
+Private only
+
+* DONE streams/class_name_binding.js                                     :Ok:
+
+Private only
+
+* DONE streams/dependency.js                                             :Ok:
+
+Private only
+
+* DONE streams/stream.js                                                 :Ok:
+
+Private only
+
+* DONE streams/subscriber.js                                        :Missing:
+
+Private constructor
+
+* DONE streams/utils.js                                             :Missing:
+
+All private except for `subscribe`. Subscribe function is missing in glimmer package.
+
+* DONE instrumentation-support                                      :Missing:
+
+Private function instrument. 
+
+* DONE system/lookup-helper.js                                      :Missing:
+
+Private javadoc function _findHelper.  Similar function found in environment.js (lookupHelper) but slightly different behavior
+
+* DONE utils/is-component.js                                        :Missing:
+
+private... Logic moved to glimmer engine
+
+* DONE views/outlets.js                                                 :Add:

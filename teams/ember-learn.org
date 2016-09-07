@@ -1,12 +1,15 @@
 * Meetings
 
-** TODO PR Notes from 8/25
+** DONE PR Notes from 8/25 <2016-08-30 Tue>
 
 * Tutorial
 
 ** TODO Subroutes
 
-- [ ] Solicit Core Team Feedback
+- [X] Solicit Core Team Feedback <2016-09-05 Mon>
+@mentioned core team on pr - no response
+- [X] Solicit Feedback from #-team-learning <2016-09-07 Wed>
+- [ ] Final updates based on feedback
 
 ** TODO Forms
 
@@ -14,14 +17,19 @@
 
 ** TODO move ember-cli-tutorial-style from my repo to ember-learn
 
+* Guides
+
+** DONE Create an issue around adding unit test "needs" documentation
+Wrapped into [[https://github.com/emberjs/guides/issues/1632][#1632 Improve Testing Guides]]
+
+** Improve Testing Guides
+
 * API Docs Emberization
 
 [[https://github.com/toddjordan/ember-api-docs][Github Repo (Fork)]]
 
 ** TODO Move to ember-learn
 
-** TODO Get running locally
+** DONE Get running locally
 
 ** TODO Task it out
-
-** TODO Create an issue around adding unit test "needs" documentation

@@ -1,6 +1,16 @@
 * Testing Types in Ember
 ** UI Test Pyramid at InIn
 * Unit Tests
+** What you get
+`this.subject()` gives you an instance of the CUT
+Provide attributes/collaborators through `this.subject({...})`
+`this.$()` gives you a reference to the component element
+`this.render()` or `this.$()` renders the template
+`didInsertElement` and `willDestroyElement` hooks called
+** What you don't get
+- The run loop
+- A prefilled registry
+- component lifecycle hooks
 ** Simulating the Run Loop
 *** What is the Run Loop?
 https://guides.emberjs.com/v2.7.0/applications/run-loop/
@@ -24,8 +34,10 @@ https://github.com/csantero/ember-sinon
 - Don't Forget needs for adapters/serializers/models
 *** Connections with HTTP Stubbing
 MockJax or Pretender
-- MockJax overrides JQuery Ajax
+- MockJax overrides JQuery Ajax 
+- https://github.com/jakerella/jquery-mockjax
 - Pretender overrides XMLHTTPRequest
+- https://github.com/pretenderjs/pretender
 ** Everything else!
 *** moduleFor
 *** Services
@@ -34,20 +46,46 @@ MockJax or Pretender
 ** Testing with Promises
 *** assert.async
 *** returning promises
+When you return an RSVP.Promise from your test, ember-qunit will run it as an async test
 * Integration Tests
+** What you get
+Container/registry implementation (collaborators loaded)
+Define components via handlebars
+`this` as an outer context
+full component lifecycle
+** What you don't get
+Access to the component instance
 ** Providing Data and Actions
 ** Stubbing Services
 ** Waiting
 * Acceptance Tests
 ** Starts and stops the app for each test
-** Fake an authenticated user
 ** Out of the Box Helpers
 *** Async Helpers
+https://guides.emberjs.com/v2.7.0/testing/acceptance/#toc_asynchronous-helpers
 *** Sync Helpers
+https://guides.emberjs.com/v2.7.0/testing/acceptance/#toc_synchronous-helpers
 *** Custom Helpers
+https://guides.emberjs.com/v2.7.0/testing/acceptance/#toc_custom-test-helpers
+`ember g test-helper myTestHelper`
 ** Fake Server with Mirage
-Users Pretender under the covers
-WIP for InIn
+http://www.ember-cli-mirage.com/
+http://ember-cli-page-object.js.org/docs/v1.5.x/
+Uses Pretender under the covers
+Maintains a complete server/orm on the client side
+** Acceptance is a WIP for InIn
+- Setting up mirage for http faking
+- Faking authentication
+- Cleaning up between tests
+- WebSockets?
+* Debugging Failures
+Follow stack traces on chrome
+Ember.Logger.log
+set on destroyed Object
+run loop
+missing needs
+`pauseTest()` to freeze screen
+`debugger` to force a breakpoint
 * Avoiding Brittle Tests
 ** assert outcomes, not internals
 ** Pure Functions
@@ -59,3 +97,6 @@ WIP for InIn
 ** Tests are much harder after the fact. Let them inform your design.
 * Links
 https://github.com/rwjblue/ember-qunit
+https://guides.emberjs.com/v2.7.0/testing/
+https://eev.ee/blog/2016/08/22/testing-for-people-who-hate-testing/
+https://github.com/emberjs/rfcs/pull/119

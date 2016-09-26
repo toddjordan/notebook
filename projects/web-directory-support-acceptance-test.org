@@ -1,0 +1,6 @@
+* Supporting Acceptance Testing in Web Directory
+
+** Jira https://github.com/livingstyleguide/livingstyleguide
+
+** Bitbucket https://bitbucket.org/inindca/web-directory/pull-requests/3885
+

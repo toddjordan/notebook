@@ -4,12 +4,11 @@
 
 * Tutorial
 
-** TODO Subroutes
+** DONE Subroutes
 
 - [X] Solicit Core Team Feedback <2016-09-05 Mon>
-@mentioned core team on pr - no response
 - [X] Solicit Feedback from #-team-learning <2016-09-07 Wed>
-- [ ] Final updates based on feedback
+- [X] Final updates based on feedback <2016-09-09 Fri>
 
 ** TODO Forms
 

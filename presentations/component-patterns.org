@@ -1,0 +1,7 @@
+* Component Patterns and Anti-Patterns
+
+** Abstract
+
+Over the last several years, the Ember JS framework has made components a central piece of its programming model.  Using components unlock many benefits, including modularity, reuse, reliable data flow, and increased rendering performance.  In this talk, we'll show and explain different component patterns that we've seen and used while developing a large Ember application and ecosystem at Interactive Intelligence.  We'll useful component patterns and when to use them, as well as patterns that can prove harmful.
+
+Todd Jordan is a Software Developer at Interactive Intelligence with over 15 years experience in web programming.  He is also a member of the Ember JS Learning team, helping Ember become approachable for both new and seasoned developers.  He is also an active member of the local Triangle Ember Community.

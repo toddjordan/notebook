@@ -1,3 +1,5 @@
+* PR: [[https://github.com/emberjs/ember.js/issues/14166][Issue #14166 Documentation Review: ember-htmlbars -> ember-glimmer]]
+
 * DONE component.js
 
 ** DONE Component                                                       :Add:
@@ -64,13 +66,13 @@ added doc to each-in.js
 
 * DONE helpers/query-params.js                                          :Add:
 
-* DONE helpers/with.js                                              :Missing:
+* DONE helpers/with.js                                                  :Add:
 
 * DONE keywords/action.js                                               :Add:
 
 * DONE keywords/component.js                                            :Add:
 
-* DONE keywords/debugger.js                                         :Missing:
+* DONE keywords/debugger.js                                             :Add:
 
 * DONE keywords/get.js                                                   :Ok:
 
@@ -90,7 +92,7 @@ Added to syntax/mount.js
 
 Added to syntax/outlet.js
 
-* DONE keywords/partial.js                                          :Missing:
+* DONE keywords/partial.js                                              :Add:
 
 * DONE keywords/readonly.js                                         :Updated:
 
@@ -126,7 +128,7 @@ Private only
 
 Private only
 
-* DONE streams/subscriber.js                                        :Missing:
+* DONE streams/subscriber.js                                             :Ok:
 
 Private constructor
 

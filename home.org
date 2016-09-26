@@ -11,8 +11,14 @@ Giving org-mode a try for a while, though it may end up a mess for me :-)
 
 ** Projects
 
+*** OSS
+
 [[file:projects/ember-cli-dynamic-forms.org][ember-cli-dynamic-forms]]
 [[file:projects/ember-glimmer-api.org][Glimmer API Doc PR]]
+
+*** InIn
+
+[[file:projects/web-directory-support-acceptance-test.org][Support Ember Acceptance Test in Web Directory]]
 
 ** Teams
 

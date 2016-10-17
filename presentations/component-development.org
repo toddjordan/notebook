@@ -1,14 +1,14 @@
 * Tasks
-** TODO Create component development education slides
+** DONE Create component development education slides
    DEADLINE: <2016-08-30 Tue>
-- [ ] Create Outline
-- [ ] Create Slides 
-** TODO Setup goto meeting for event(s) [0/4]
+- [X] Create Outline
+- [X] Create Slides 
+** DONE Setup goto meeting for event(s) [4/4]
    DEADLINE: <2016-08-29 Mon>
-- [ ] Find site
-- [ ] Reserve event
-- [ ] Set up to record
-- [ ] Update invite
+- [X] Find site
+- [X] Reserve event
+- [X] Set up to record
+- [X] Update invite
 
 
 * Outline: Ember Component Development Best Practices

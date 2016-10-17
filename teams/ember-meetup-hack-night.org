@@ -1,0 +1,14 @@
+* New Contributor Issues
+** Ember
+*** [[https://github.com/emberjs/ember.js/issues/14235][14235 API: Improve Lifecycle Hooks documentation]]
+*** [[https://github.com/emberjs/ember.js/issues/14168][14168 Deprecation: targetObject]]
+*** [[https://github.com/emberjs/ember.js/issues/14136][14136 Deprecation: didCreateRootView]]
+*** [[https://github.com/emberjs/ember.js/issues/14092][14092 Deprecation: addArrayObserver]]
+*** [[https://github.com/emberjs/ember.js/issues/13793][13793 API: Update Ember.Test.wait]]
+*** [[https://github.com/emberjs/ember.js/issues/13767][13767 API: Broken Source Links]]
+*** [[https://github.com/emberjs/ember.js/issues/13074][13074 Guides: Elaborate on Backburner.DEBUG]]
+** Guides
+*** [[https://github.com/emberjs/guides/issues/1572][1572 Tutorial: filter results not properly updating when typing fast]]
+*** [[https://github.com/emberjs/guides/issues/1632][1632 Testing Guide: Unit test improvements]]
+*** [[https://github.com/emberjs/guides/issues/1637][1637 Components Guide: Lifecycle Hook Improvements]]
+*** [[https://github.com/emberjs/guides/issues/1665][1665 Tutorial: Update screenshot to match test names]]

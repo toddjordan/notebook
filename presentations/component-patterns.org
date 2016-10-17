@@ -5,3 +5,45 @@
 Over the last several years, the Ember JS framework has made components a central piece of its programming model.  Using components unlock many benefits, including modularity, reuse, reliable data flow, and increased rendering performance.  In this talk, we'll show and explain different component patterns that we've seen and used while developing a large Ember application and ecosystem at Interactive Intelligence.  We'll useful component patterns and when to use them, as well as patterns that can prove harmful.
 
 Todd Jordan is a Software Developer at Interactive Intelligence with over 15 years experience in web programming.  He is also a member of the Ember JS Learning team, helping Ember become approachable for both new and seasoned developers.  He is also an active member of the local Triangle Ember Community.
+
+** Outline
+
+*** Components Everywhere!
+
+*** Tradeoff: Display vs Coordinating
+
+**** Display Components
+
+**** Data Morphing Components
+
+**** Coordinating Components
+
+*** Tradeoff: Customizable vs Easy to include
+
+**** Block Components
+
+**** Out of the Box Components
+
+*** Tradeoff: Data Flows through the tree vs on a bus
+
+**** DDAU
+
+**** Services
+
+*** Tradeoff: Global vs Local Styles
+
+*** Anti-Pattern: Tons of Attributes
+
+**** Alternative: Objects to pass through, types to use
+
+*** Anti-Pattern: Observations
+
+**** Alternative: Lifecycle Hooks, computeds
+
+*** Anti-Pattern: Lotsa State
+
+**** Alternative: Functional Components, Services
+
+*** Anti-Pattern: Giants
+
+**** Alternative: SRP, Modularization

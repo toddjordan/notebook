@@ -1,3 +1,84 @@
+* Tasks
+
+** TODO Create Slides
+
+** TODO Complete ember-purecloud-style
+
+* Ember Addon Strategy and Best Practices
+
+** Addon Basics
+
+*** ember js files go in the addon directory.  Use the app directory to make them public (export)
+
+*** use blueprints to generate templates using `ember g`
+
+*** "ember install" does an npm install, plus runs the default blueprint
+
+**** write your bower dependencies in your default blueprint
+
+*** ember cli provides hooks into addon build pipeline via index.js
+
+**** copy in assets, folders using build hooks and broccoli tools
+
+**** lets you do non-standard stuff, like tree-shaking (later)
+
+**** Debug your broccoli in the tmp dir
+
+
+** Avoid Circular Dependencies
+
+*** Allow for inclusion in multiple apps
+
+*** Test in isolation
+
+*** Avoid your parents breaking you
+
+** Your Shared Services are APIs
+
+*** Semver Them
+
+**** 
+
+**** Version up on breaking changes
+
+*** Define them in your addon or factor them out
+
+*** Don't break your clients!
+
+** Common Component Strategy
+
+** PureCloud Common Component Repo
+
+*** Most Engines will use this
+
+** When you go off Reservation
+
+*** Open Sourcing!
+
+*** Used by other addons/apps
+
+** Aspects of a usable component
+
+*** Tests
+
+*** Documentation
+
+*** Modularity
+
+** What about other ember things?
+
+*** Anything can be in a component
+Models, adapters, serializers, utils, services
+
+** Tips to componentizing
+
+*** Eject services in favor of data/actions
+
+*** 
 * Links
 [[https://pixelhandler.com/posts/developing-ember-addons-next-generation-css-with-postcss][Next Generation CSS with postCSS]]
 [[http://emberup.co/ember-addon-secrets/][Ember Addon Secrets]]
+[[https://ember-cli.com/api/classes/Addon.html][Ember CLI Addon Hooks]]
+[[https://youtu.be/hNwgp9alwKg?list%3DPL4eq2DPpyBblc8aQAd516-jGMdAhEeUiW][Dissecting an Ember CLI Build (EmberConf)]]
+
+

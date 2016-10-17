@@ -1,0 +1,18 @@
+
+** Broccoli Visualizations
+
+BROCCOLI_VIZ=true ember build
+dot -Tpng graph.0.dot -o graph.0.png
+
+included hook (addon)
+when ember instance is constructed, and when the addons are discovered and inited, used to bring in additional dependencies
+
+** treeFor hooks
+
+consuming project always wins
+
+treeForAddon allows an app to exclude parts of addons it doesn't need
+
+broccoli-stew - lets you debug by leaving around tree folders
+
+use preProcess/postProcess hooks to insert code before/after node processing.

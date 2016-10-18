@@ -8,6 +8,7 @@ Giving org-mode a try for a while, though it may end up a mess for me :-)
 
 [[file:presentations/component-development.org][Ember Component development best practices]]
 [[file:presentations/ember-testing.org][Ember testing best practices]]
+[[file:presentations/component-patterns.org][Ember Component Patterns]]
 
 ** Projects
 
@@ -15,6 +16,8 @@ Giving org-mode a try for a while, though it may end up a mess for me :-)
 
 [[file:projects/ember-cli-dynamic-forms.org][ember-cli-dynamic-forms]]
 [[file:projects/ember-glimmer-api.org][Glimmer API Doc PR]]
+[[file:projects/unit-testing-improvements.org][Unit Testing Guide Improvements]]
+[[file:projects/ember-cli-notes.org][Ember CLI Notes]]
 
 *** InIn
 

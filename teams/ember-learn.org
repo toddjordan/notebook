@@ -1,39 +1,31 @@
-* Meetings
-
-** DONE PR Notes from 8/25 <2016-08-30 Tue>
-
-** PR Notes from 10/13
-   SCHEDULED: <2016-10-17 Mon>
-
-* Tutorial
-
-** DONE Subroutes[3/3]
-
+* ember-learn
+** Meetings
+*** DONE PR Notes from 8/25 <2016-08-30 Tue>
+*** TODO PR Notes from 10/13
+    SCHEDULED: <2016-10-17 Mon>
+*** TODO learning team meeting
+    SCHEDULED: <2016-10-20 Thu +1w>
+** Tutorial
+*** DONE Subroutes[3/3]
 - [X] Solicit Core Team Feedback <2016-09-05 Mon>
 - [X] Solicit Feedback from #-team-learning <2016-09-07 Wed>
 - [X] Final updates based on feedback <2016-09-09 Fri>
-
-** TODO Forms Tutorial
-
+*** TODO Forms Tutorial
 - [ ] Create Detailed Plan/Tasks in github (or trello)
-
-** DONE move ember-cli-tutorial-style from my repo to ember-learn
-
-* Guides
-
-** TODO Improve Testing Guides
+*** DONE move ember-cli-tutorial-style from my repo to ember-learn
+** Guides
+*** TODO Improve Testing Guides
 Wrapped into [[https://github.com/emberjs/guides/issues/1632][#1632 Improve Testing Guides]]
 
-** Update Tutorial to Separate Model, Data, Mirage more clearly
+*** Update Tutorial to Separate Model, Data, Mirage more clearly
 [[https://github.com/emberjs/guides/issues/1695][#1695 Replace Mirage?]]
 
-* API Docs Emberization
+** API Docs Emberization
 [[https://github.com/toddjordan/ember-api-docs][Github Repo (Fork)]]
+*** TODO Move to ember-learn 
+*** TODO Talk to 5tanley about helping
+    SCHEDULED: <2016-10-19 Wed>
 
-** TODO Move to ember-learn 
-** TODO Talk to 5tanley about helping
-   SCHEDULED: <2016-10-19 Wed>
+*** DONE Get running locally
 
-** DONE Get running locally
-
-** TODO Task it out
+*** TODO Task it out

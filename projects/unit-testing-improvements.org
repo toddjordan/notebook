@@ -1,0 +1,23 @@
+* Unit Test Improvements
+
+Issue: [[https://github.com/emberjs/guides/issues/1632][#1632]]
+
+** needs
+By default, unit tests test only the class under test and not collaborators loaded by the ember container, such as services and handlebars helpers.
+Ember unit tests do provide a means to load collaborators, but specifying them in a `needs` block.  
+In the needs block, you specify dependencies by their resolver lookup names.
+
+** run loop
+Unit tests also run outside of the ember run loop.  
+Ember uses a run loop to schedule tasks.  To learn more about the ember run loop, read its guides section<link>.
+If you call asynchronous functions within a unit test, you will get the following error:
+<error pic here>
+This is because asynchronous functions in ember make use of the run loop, which is not in use in unit tests.
+Use `Ember.run` to wrap an asynchronous call in a run loop.
+
+** beforeTest and afterTest
+To run code before or after each test within a module, implement the `beforeTest` function in the module definition.
+
+** helpers
+Often you will want to abstract common functions so that they may be reused between tests.
+

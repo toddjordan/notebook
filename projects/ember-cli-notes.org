@@ -1,4 +1,4 @@
-
+* Ember CLI Notes
 ** Broccoli Visualizations
 
 BROCCOLI_VIZ=true ember build

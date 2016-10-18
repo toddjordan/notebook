@@ -1,0 +1,10 @@
+* TODO common less variable sharing in ember-purecloud-components
+  SCHEDULED: <2016-10-18 Tue>
+* TODO start on higher level clojure functions for hydrant
+  SCHEDULED: <2016-10-19 Wed>
+* TODO fix search defect
+  SCHEDULED: <2016-10-19 Wed>
+* TODO get acceptance test back running
+  SCHEDULED: <2016-10-20 Thu>
+* TODO prepare for modern web talk
+  DEADLINE: <2016-10-24 Mon>

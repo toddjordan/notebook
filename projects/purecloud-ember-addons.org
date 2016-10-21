@@ -1,25 +1,27 @@
-* Addonization
-** ember-nav-components
-** TODO navigation-sub-menu
-**** attrs
-- menuItems
+* PureCloud Common Addons                                :purecloud:projects:
+** Addonization
+*** ember-purecloud-style
+**** TODO Talk to UX (casey?) about updating pure-cloud-style-guide for icons, etc
+     SCHEDULED: <2016-10-21 Fri> DEADLINE: <2016-10-21 Fri>
 
-** TODO application-links
-* Addon Dependencies
+*** ember-purecloud-components
+**** DONE common less variable sharing in ember-purecloud-components
+     SCHEDULED: <2016-10-18 Tue>
+
+** Addon Dependencies
 [[file:~/Desktop/purecloud-addon-dependencies.png][addon dependency graph]]
 
-** ember-purecloud-components
-*** ember-nav-components
-**** ember-purecloud-utilities
-**** ember-purecloud-style
-*** ember-entity-components
-**** ember-purecloud-utilities
-**** ember-purecloud-style
 
-* Tree Shaking
+
+** Tree Shaking
 [[https://github.com/DockYard/ember-composable-helpers/pull/40/files][Tree shaking PR for ember composable helpers]]
 
 
 
-* Questions
-** utils addon?
+** Questions
+*** utils addon?
+
+** Jira
+[[https://inindca.atlassian.net/browse/UI-2767][UI-2767 PureCloud Common Component Infrastructure]]
+[[https://inindca.atlassian.net/browse/UI-2768][UI-2768 Provide Common Styles across PureCloud Components and Applications]]
+[[https://inindca.atlassian.net/browse/UI-2769][UI-2769 Provide Tree Shaking for Common Ember Component Addon]]

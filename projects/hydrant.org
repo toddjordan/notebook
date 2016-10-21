@@ -1,0 +1,3 @@
+* DONE start on higher level clojure functions for hydrant         :projects:
+  SCHEDULED: <2016-10-19 Wed>
+  CLOCK: [2016-10-20 Thu 09:31]--[2016-10-20 Thu 13:00]

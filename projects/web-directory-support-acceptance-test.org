@@ -1,6 +1,9 @@
-* Supporting Acceptance Testing in Web Directory
+* Supporting Acceptance Testing in Web Directory         :projects:purecloud:
 
-** Jira https://github.com/livingstyleguide/livingstyleguide
-
+** Jira https://inindca.atlassian.net/browse/PCDWEBK-2936
 ** Bitbucket https://bitbucket.org/inindca/web-directory/pull-requests/3885
+
+** TODO get acceptance tests back running
+   SCHEDULED: <2016-10-20 Thu>
+   CLOCK: [2016-10-21 Fri 10:10]--[2016-10-21 Fri 16:37] =>  6:27
 

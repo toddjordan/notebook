@@ -1,5 +1,5 @@
 
-* Issues
+* ember-cli-dynamic-forms Issues                               :oss:projects:
 
 ** TODO Custom Views                                            :enhancement:
 

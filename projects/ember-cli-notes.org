@@ -1,4 +1,4 @@
-* Ember CLI Notes
+* Ember CLI Notes                                                     :notes:
 ** Broccoli Visualizations
 
 BROCCOLI_VIZ=true ember build
@@ -16,3 +16,7 @@ treeForAddon allows an app to exclude parts of addons it doesn't need
 broccoli-stew - lets you debug by leaving around tree folders
 
 use preProcess/postProcess hooks to insert code before/after node processing.
+
+** Running DEBUG
+
+DEBUG=* ember s

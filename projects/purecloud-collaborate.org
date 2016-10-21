@@ -1,0 +1,7 @@
+* Issues                                                 :projects:purecloud:
+** DONE fix search defect
+  SCHEDULED: <2016-10-19 Wed>
+  CLOCK: [2016-10-18 Tue 12:13]--[2016-10-18 Tue 13:15] =>  1:02
+[[https://inindca.atlassian.net/browse/PCDWEBK-3715][PCDWEBK-3715]]
+Issue is that when search is requested, chat-conversation is setting the search value back to what was submitted.
+Instead it should keep a separate instance variable of the last search and not set the input field.

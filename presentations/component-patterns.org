@@ -1,4 +1,7 @@
-* Component Patterns and Anti-Patterns
+* Component Patterns and Anti-Patterns                        :presentations:
+
+** TODO prepare for modern web talk
+   DEADLINE: <2016-10-24 Mon>
 
 ** Abstract
 
@@ -6,21 +9,69 @@ Over the last several years, the Ember JS framework has made components a centra
 
 Todd Jordan is a Software Developer at Interactive Intelligence with over 15 years experience in web programming.  He is also a member of the Ember JS Learning team, helping Ember become approachable for both new and seasoned developers.  He is also an active member of the local Triangle Ember Community.
 
+** Demo Scenarios
+
+*** DDAU + Functional Components
+Ember's sweetspot
+twiddle: giphy ping
+
+*** Data Morphing Components
+Decorate your components
+twiddle: giphy ping with roulette
+
+*** Block Components + Hash Yielding
+Gives the consumer building blocks for max customization
+twiddle: giphy ping with customization
+
+*** Coordinating Components
+Ease of use and reuse
+twiddle: the giphy ping component
+
+*** Service Event Bus + Coordinating Components
+Brodcasting when things happen
+twiddle: giphy ping with alert
+
+
 ** Outline
 
 *** Components Everywhere!
+
+**** Why they came about
+
+**** W3C Custom Elements
+
+**** Not a golden pill, we can still muck it up
+
+**** What to take from this
+Programming Principles are still true
 
 *** Tradeoff: Display vs Coordinating
 
 **** Display Components
 
+***** Inputs(attributes) always yield the same outputs (rendered markup)
+
+***** Inputs(user interaction) always yield the same result (actions)
+
 **** Data Morphing Components
 
+***** Paginator
+
+***** Inputs (attributes) always yield the same outputs (yields)
+
 **** Coordinating Components
+
+***** Chat
+
+***** Stateful
 
 *** Tradeoff: Customizable vs Easy to include
 
 **** Block Components
+
+***** Yield is an API return value
+
+***** Documenting a Component API
 
 **** Out of the Box Components
 
@@ -28,7 +79,11 @@ Todd Jordan is a Software Developer at Interactive Intelligence with over 15 yea
 
 **** DDAU
 
+***** colored boxes, ping/pong
+
 **** Services
+
+***** colored boxes, box name/color
 
 *** Tradeoff: Global vs Local Styles
 
@@ -36,14 +91,30 @@ Todd Jordan is a Software Developer at Interactive Intelligence with over 15 yea
 
 **** Alternative: Objects to pass through, types to use
 
+*** Anti-Pattern: Lots of Services
+
+**** Alternative: Push Services up to coordinating components or routes, use them with care
+treat them as side effects
+
 *** Anti-Pattern: Observations
 
 **** Alternative: Lifecycle Hooks, computeds
+**** Alternative: Avoiding internal state
 
-*** Anti-Pattern: Lotsa State
+*** Anti-Pattern: State, Lotsa State
 
 **** Alternative: Functional Components, Services
 
 *** Anti-Pattern: Giants
 
 **** Alternative: SRP, Modularization
+
+*** Other Possible Anti-Patterns
+Doing too much
+Knowing too much
+
+*** Principles Patterns
+Law of Demeter
+SRP
+Cohesion and Coupling
+Pure Functions

@@ -1,0 +1,98 @@
+* Interesting links
+** EdX?
+* Talks
+** Simon MacDonald Maintaining Open Source without losing your mind
+Ask for contributions always.  Start from the beginning
+*** contributing.md
+**** code of conduct
+**** how to PR
+**** include things you want to see there
+**** style guide + .editorconfig
+*** licence, any common license
+*** issues vs questions
+**** all github issues
+**** github issues SO questions
+*** Good issue template
+**** have you searched issue list
+**** what is expected behavior
+**** what is the actual behavior
+**** Reproduce with
+***** version
+***** sample
+***** logs
+*** PR Template
+**** Include a checklist!
+** Authority, Conformity, Community by Sandy Metz
+*** Social Psychology Experiments
+*** Other people rebelling makes you more likely to rebel
+*** Elicit public opinions if you want conformity
+*** Elicit private opinions if you want divirsity
+*** Independant thought
+**** INcrease distance from authority
+**** Reduce distance to victims
+**** Allow collaboration with other independent thinkers
+*** Bystander effect, want inaction?
+**** direct requests to a group (group bargain on how to behave)
+**** prefer action?  Direct request to an individual
+*** We are hard wired to conform and obey.  We are predisposed in groups to not act as individuals
+**** All it takes is on person to change the rules
+**** Be yourself, act like you are the only one in it.
+** Practical Advice for Tech Writers
+https://opensource.com/stephen-king
+https://opensource.com/business/15/5/write-better-docs
+*** 3 General Categories of Readers
+**** Lay
+**** Managerial
+**** Experts
+*** To be a better writer, you need to read a lot and write a lot (Stephen King)
+*** Do lots of reading before you start writing (other project's documentation)
+*** Define your audience (this is for you if...)
+*** Invite the reader in "listen, come in here. You want to know about this" - Stephen King
+**** A solid intro paragraph will do wonders.  Shouldn't have to read past the first paragraph to know what you are writing about.
+*** Remove/Link boring parts (kill you darlings -King) Remove explainations where you can link.
+*** Show sample outlines for first time writers/contributors
+*** Questions
+**** How do you keep cohesiveness in Guides among multiple contributors?
+**** Most OSS contributors are experts and have a hard time finding what's hard for a newbie.  Do you have any recommendations for writing for newbies?
+***** Python as examples
+*** To write is human, to edit is divine -Stephen King
+**** when you write a draft, walk away, get some sleep, and come back to it the next day
+*** don't have accept or agree with feedback.
+*** Use an outline
+*** Start Writing
+** Rachel Nabors
+*** Getting Designers
+**** "Go to the mountain"
+**** Incentivize - don't get paid enough - bounties
+**** Trust/Respect
+***** Empower them to lead the effort
+** Kent C Dobbs: Encouraging 
+*** Encouraging Contributions  http://slides.com/kentcdodds/1st-p
+*** ROADMAP.md will do / won't do / might do
+*** Build in extensibility (ex. redux grunt gulp). Done because they are extensible!
+*** Create an npm run setup script - good for new contributors, ensures things are working from the start.
+*** husky - adds git hooks based on defined scripts in package.json
+*** Docs
+**** Explain the problem
+**** Explain the solution
+**** installation
+*** Healthy Open Source by Michael Rodgers
+*** Don't do everything(anything) yourself
+*** semantic-release - don't need the project on your computer!!!
+*** add a good for new beginners and first-timers only tag
+*** add an all-contribtor page
+*** Give commit access freely and early
+** Design Thinking and Open Source in the Enterprise
+** Brandon Mathis: How to Win Friends and Influence in Open Source
+*** Ways to participate
+**** Issue Triage
+***** Find Issue
+***** Duplicate
+***** Report Back
+
+* General Inspiration
+** Stop contributing, spend my time helping new contributors and developing issues
+*** kcd.im/manage-oss
+
+
+

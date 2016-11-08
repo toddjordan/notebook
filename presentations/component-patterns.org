@@ -1,6 +1,6 @@
 * Component Patterns and Anti-Patterns                        :presentations:
 
-** TODO prepare for modern web talk
+** DONE prepare for modern web talk
    DEADLINE: <2016-10-24 Mon>
 
 ** Abstract

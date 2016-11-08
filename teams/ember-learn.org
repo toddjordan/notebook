@@ -8,11 +8,15 @@
     :ORDERED:  t
     :END:
 *** TODO learning team meeting                                        :teams:
-    SCHEDULED: <2016-10-27 Thu +1w>
+    SCHEDULED: <2016-11-17 Thu +1w>
+    - State "DONE"       from "TODO"       [2016-11-04 Fri 11:38]
     - State "DONE"       from "TODO"       [2016-10-21 Fri 10:00]
     :PROPERTIES:
-    :LAST_REPEAT: [2016-10-21 Fri 10:00]
+    :LAST_REPEAT: [2016-11-04 Fri 11:38]
     :END:
+**** TODO Summarize Tutorial discussion
+     DEADLINE: <2016-11-05 Sat>
+
 ** Tutorial                                                        :tutorial:
 *** DONE Subroutes[3/3]
 - [X] Solicit Core Team Feedback <2016-09-05 Mon>
@@ -25,7 +29,7 @@
 https://github.com/emberjs/guides/issues/1708
 *** TODO replace mirage issue
 https://github.com/emberjs/guides/issues/1695
-- [ ] Link to learn notes on discussion
+- [X] Link to learn notes on discussion
 ** Guides
 *** TODO Improve Testing Guides
 Wrapped into [[https://github.com/emberjs/guides/issues/1632][#1632 Improve Testing Guides]]
@@ -36,7 +40,7 @@ Wrapped into [[https://github.com/emberjs/guides/issues/1632][#1632 Improve Test
 ** API Docs Emberization
 [[https://github.com/toddjordan/ember-api-docs][Github Repo (Fork)]]
 *** TODO Move to ember-learn 
-*** TODO Talk to 5tanley about helping                                :teams:
+*** DONE Talk to 5tanley about helping                                :teams:
     DEADLINE: <2016-10-27 Thu> SCHEDULED: <2016-10-27 Thu>
 
 *** DONE Get running locally

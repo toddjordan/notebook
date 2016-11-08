@@ -1,0 +1,59 @@
+
+** Actionable Tasks
+*** Include links to javascript/es6 concepts when first encountered
+[ ] Promises
+[ ] const vs let
+[ ] this
+[ ] this._super
+[ ] destructuring
+
+*** Ember Concepts needing brief intro and/or link when first encountered
+[ ] Include a section on "what is a component"
+[ ] Template
+[ ] mention/link handlebar helper params
+[ ] QUnit
+[ ] The router/routes
+
+*** Acceptance Testing 
+[ ] Route mentioned before introduced
+[ ] Need for andThen helper not explained
+[ ] Mention of "data" and "search field", but not clear what it applied to (clarify)
+
+*** Routes and Templates
+[ ] Explain/link to what the "router" and a "template" is before diving into it
+[ ] Use consistent terminology between "route" and "route handler"
+[ ] "The generator has mapped a new route for us" - confusing language for newbie
+[ ] Change any file identified named by just name to use entire path
+[ ] Explain the need for the {{link-to}} helper as opposed to just an anchor tag
+[ ] The word "seed" might be confusing for some when describing initially loading content on the page.
+[ ] {{outlet}} explanation is not clear, especially since route/router hasn't been explained.
+
+*** Model Hook
+[ ] Text mentions add, update, and deletion of rentals but not in the current scope of the tutorial
+[ ] Explanation of a "hook" is given after it has already been referenced several times
+[ ] es6 way of method definition is explained, but prevoiusly used in the routes section (move earlier)
+[ ] The text "The model hook returns our rentals array and passes it to our rentals template as the model property" is unclear
+[ ] The terms "model data", "model property", "model", and "model object" seem to be used interchangably.  Use consistent terminology.
+
+***  Installing Addons
+[ ] Remove the "how it works" part of the intro to ember-cli-tutorial-style, Explain more why we are including it.
+[ ] Explain why we need ember-cli-mirage, and how its different than ember-data
+[ ] Text mentions a GET request, when in reality that request is never made
+[ ] Ember Data Adapter concept is introduced with no explanation
+
+*** Ember-Data
+
+[ ] Expand on "Now we have a model in our ember data store".  What is a data store, and how does a model get there?
+[ ] Mentions sending GET request but no GET happens (mirage)
+[ ] Need a link or explanation of providing a back end to the application, and why this would only be in production (wouldn't necessarily).
+
+*** Building a Simple Component
+[ ] Explain/link what is a stub
+[ ] Move explanation of a component to the beginning of the section
+[ ] Explain what "actions hash" is
+[ ] Explain or clarify what "default template helper" is
+
+
+** Larger Discussion Topics
+
+*** Should we Remove TDD Concepts?

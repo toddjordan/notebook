@@ -1,0 +1,12 @@
+* What Might be Interesting
+
+** Pushing Ember into a different technology space
+desktop, mobile, IoT
+
+** New methodolgy using Ember
+past: functional, living style guide
+
+** Understanding Innerds (ususally from a core member)
+
+** Ember TDD
+Applying GOOS to Ember

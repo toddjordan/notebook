@@ -1,0 +1,10 @@
+* Create an Web Application Platform in 15 minutes using Ember Engines
+Ember Engines is a new technology built into the Ember Web Framework that allows an application to seamlessly integration sub-applications.  
+Engines allow different applications to be bound in a single UI and share common services and routing.
+In this short talk we will demonstrate the power of engines by creating a simpla application platform.
+The application platform will allow developers to install and integrate one or more applications into its existing shell.
+
+** Create the ember application shell app
+** Create a new engine
+** Update addon to write to config
+** Install the engine into the application shell

@@ -2,12 +2,13 @@
 ** Addonization
 *** ember-purecloud-style
 **** TODO Talk to UX (casey?) about updating pure-cloud-style-guide for icons, etc
-     SCHEDULED: <2016-10-21 Fri> DEADLINE: <2016-10-21 Fri>
+     SCHEDULED: <2016-11-07 Mon> DEADLINE: <2016-11-07 Mon>
 
 *** ember-purecloud-components
 **** DONE common less variable sharing in ember-purecloud-components
      SCHEDULED: <2016-10-18 Tue>
-
+**** TODO Add eslint, fix style
+     SCHEDULED: <2016-11-04 Fri>
 ** Addon Dependencies
 [[file:~/Desktop/purecloud-addon-dependencies.png][addon dependency graph]]
 
@@ -15,7 +16,6 @@
 
 ** Tree Shaking
 [[https://github.com/DockYard/ember-composable-helpers/pull/40/files][Tree shaking PR for ember composable helpers]]
-
 
 
 ** Questions

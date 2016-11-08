@@ -7,6 +7,11 @@ dot -Tpng graph.0.dot -o graph.0.png
 included hook (addon)
 when ember instance is constructed, and when the addons are discovered and inited, used to bring in additional dependencies
 
+** Broccoli stew debug
+
+const debug = require('broccoli-stew').debug;
+commonLess = debug(commonLess, {name: 'commonLess'});
+
 ** treeFor hooks
 
 consuming project always wins
@@ -20,3 +25,19 @@ use preProcess/postProcess hooks to insert code before/after node processing.
 ** Running DEBUG
 
 DEBUG=* ember s
+
+** Built-in Debugger
+
+node debug node_modules/ember-cli/bin/ember <command>
+c: continue
+s: step in
+o: step out
+n: next
+
+https://spin.atomicobject.com/2015/09/25/debug-node-js/
+
+** Node Inspector
+
+npm -g node-inspector
+node-debug node_modules/ember-cli/bin/ember <command>
+(uses chrome)

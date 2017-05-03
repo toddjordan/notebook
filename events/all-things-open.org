@@ -93,6 +93,26 @@ https://opensource.com/business/15/5/write-better-docs
 * General Inspiration
 ** Stop contributing, spend my time helping new contributors and developing issues
 *** kcd.im/manage-oss
+* 2017 Talks
+** Boilerplate
+*** Speaking credentials
+GemConf 2016
+https://vimeo.com/182941645
+Triangle Ember Meetup 
+https://vimeo.com/174421457
+https://vimeo.com/159309998
+Triangle Modern Web
+https://youtu.be/jNhxQkQyRi0
+EmberConf 2017 - 
+http://emberconf.com/speakers.html#todd-jordan
 
+*** Bio
+Web Application Developer with Genesys, working on Cloud-based realtime collaboration software.  One of the Organizers of the Triangle Ember meetup. Member of the EmberJS Learning Team.  
 
+** Abstracts
+
+*** Creating a Monster UI with OSS
+Genesys uses 10+ teams and a 100+ developers to create a single cohesive User Interface for our cloud-based suite of products, using EmberJS.
+
+This talk goes into the technical and cultural challenges that go into building such an application suite UI, as well as some of the interesting ways that we've addressed them.
 

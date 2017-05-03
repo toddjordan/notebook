@@ -1,34 +1,42 @@
-* Ember CLI Notes                                                     :notes:
+* Ember CLI Notes
 ** Broccoli Visualizations
+Generate a visual view of your broccoli build tree.
 
-BROCCOLI_VIZ=true ember build
+BROCCOLI\_VIZ=true ember build
 dot -Tpng graph.0.dot -o graph.0.png
 
-included hook (addon)
-when ember instance is constructed, and when the addons are discovered and inited, used to bring in additional dependencies
-
 ** Broccoli stew debug
+
+broccoli-stew - 
+https://github.com/stefanpenner/broccoli-stew
+use `debug` to leave around tree folders in various steps/hooks of build
+see: https://dockyard.com/blog/2015/02/02/debugging-a-broccoli-tree
 
 const debug = require('broccoli-stew').debug;
 commonLess = debug(commonLess, {name: 'commonLess'});
 
-** treeFor hooks
+** Hooks
+
+*** included
+when ember instance is constructed, and when the addons are discovered and inited, used to bring in additional dependencies
+
+*** treeFor hooks
 
 consuming project always wins
 
 treeForAddon allows an app to exclude parts of addons it doesn't need
 
-broccoli-stew - lets you debug by leaving around tree folders
+*** pre/postProcess
 
 use preProcess/postProcess hooks to insert code before/after node processing.
 
-** Running DEBUG
+** Running with debug statements printing to console
 
 DEBUG=* ember s
 
-** Built-in Debugger
+** Node Built-in Debugger
 
-node debug node_modules/ember-cli/bin/ember <command>
+node debug node\_modules/ember-cli/bin/ember <command>
 c: continue
 s: step in
 o: step out
@@ -38,6 +46,16 @@ https://spin.atomicobject.com/2015/09/25/debug-node-js/
 
 ** Node Inspector
 
+You can debug ember-cli using the chrome debugger via node inspector.
 npm -g node-inspector
-node-debug node_modules/ember-cli/bin/ember <command>
+node-debug node\_modules/ember-cli/bin/ember <command>
 (uses chrome)
+
+
+** Debugging Phantom
+
+testem.js:
+phantomjs\_debug\_port: 9234
+http://localhost:9234
+will stop at debugger; statements
+https://github.com/testem/testem/blob/master/README.md#phantomjs

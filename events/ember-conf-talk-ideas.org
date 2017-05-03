@@ -1,12 +1,118 @@
+http://emberconf-cfp.herokuapp.com/events/emberconf-2017
+
 * What Might be Interesting
 
 ** Pushing Ember into a different technology space
 desktop, mobile, IoT
 
 ** New methodolgy using Ember
-past: functional, living style guide
+past: functional, living style guide*
+*** Ember as an Application Platform                              :submitted:
+http://emberconf-cfp.herokuapp.com/events/emberconf-2017/proposals/97d235fac9
+**** Abstract
+With the introduction of Ember Engines, Ember has become uniquely suited to be an applicaiton platform.
+An application platform being a UI shell where teams and customers can install applications and receive common services and features such as video, chat, and telephony.
+I'll talk about how Interactive Intelligence has used Ember as an application platform, allowing multiple autonomous teams to contribute applications to form a cohesive and feature rich product suite.
+**** Details
+I've given a talk about this subject at a past meetup, but will likely change the content: https://vimeo.com/174421457. 
+It was primarily about the story behind our product suite and technical detail on how we made it work.
+
+I could go different directions with the talk, and would like feedback
+1. Technical: Go into how the platform works, including installing, supporting various web frameworks, and how apps communicate with the platform.
+2. Lessons Learned: Coming up with a strategies for sharing assets, versioning, building, and still keep autonomy of app teams.
+3. Cultural: How different app development teams work and what they share, plus the challenges that having mutiple autonomous teams poses.
+
+***** Outline
+1. Our Story - How we became an app platform, how we settled on Ember/Engines
+2. How we make it work
+- Sharing Common Assets between Engines (Component suite/common services addon/common styles/fonts)
+- Versioning, Semver, Deprecations
+- CI, publishing releases
+- Introducing New Engines
+3. Cultural
+- Team Autonomy
+- Disseminating Information
+- Open Source Culture
+
+**** Pitch
+Now that Engines is approaching becoming a full fledged feature of Ember, it would be good to see how a large company is using it to power a multi-app product suite. 
+It could be used as a guide to other companies for using Ember for this common technical use case.
+
+*** Ember Component Patterns and Anti-Patterns                    :submitted:
+http://emberconf-cfp.herokuapp.com/events/emberconf-2017/proposals/cbb49849cf
+**** Abstract
+Components are powerful tools for crafting user interfaces in Ember, but with power comes responsibility. 
+Using an simple Animated Gif Chat App to demonstrate, I'll go through various strategies for effectively and not-so-effectively using Ember components to create clean, maintainable UIs, and talk about the tradeoffs you make in choosing these strategies.
+
+**** Details
+I did a version of this for ModernWeb in the triangle using twiddle to demonstrate different
+https://toddjordan.github.io/modern-web-ember-component-patterns/#/
+
+- Functional Components
+- Data-only Components (tagless)
+- Contextual Components
+- Coordinating Components
+- Service Bus
+Also will show exaples of component usages that go wrong
+- Component Giants
+- JQuery as a Hammer
+- Service interdependencies
+- Extreme Mutability
+
+**** Pitch
+Ember provides a great deal of flexibility in its components, allowing you to take many strategies to solve various UI challenges. Its important to understand the tradeoffs you make in choosing how to craft your UIs.
+
+This talk will focus on tradeoffs and not be dogmatic, hopefully giving the viewer some inform knowledge of strategies to choose from. They'll also be able to go back and play with the examples in twiddle.
 
 ** Understanding Innerds (ususally from a core member)
 
 ** Ember TDD
-Applying GOOS to Ember
+*** Applying GOOS to Ember
+The book Growing Object Oriented Software, Guided by Tests is a popular book on Test Driven Development, aimed a primarily the Java community.  
+*** Outside-In Development in Ember
+1. Start with a requirement (Acceptance Criteria)
+2. Write a failing test to describe your requirement
+3. Fire tracer bullets (walking skeleton) - Get a minimal end to end path working
+4. Take a Layered approach, using mocking
+5. 
+*** Making Ember Bulletproof
+** Soft Topics
+*** Empathy in Community
+*** From Learning to Teaching
+*** Breaking Through - From Learning to Teaching to Enabling      :submitted:
+Ember needs your help.  You want to contribute to OSS, but it seems a little overwhelming and you're not quite sure where to start.  
+I'll give you some concrete ways to get started by showing some of the active projects within the Ember Learn ecosystem, and giving some insight into how Learning education and infrastructure is built.
+
+The talk will spend some time on explaining how the Ember Learn team works, what projects we work on, and where our resources are.
+
+**** Details
+We'll follow the path of pulling down ember source, making a small API docs change, testing it out, and then submitting a PR.
+
+Then we'll look at the learn team's infrastructure work.  
+
+First we'll catch up with what's hot from last weeks minutes. 
+We find out that there's work happening on the effort to make the API docs an Ember app.  
+Then we'll go to the ember-learn repository and take a look at the project todos. 
+
+We'll find one with a help wanted and pull down the ember app.
+We'll get on slack, pose a question, make the update and test.
+Finally we'll PR our infrastructure change.
+**** Pitch
+The goal is to take the intimidation factor away from contributing by showing where to find issues and how to address. 
+
+I'd like the audience to walk away with a good idea of the ember learning ecosystem and some inspiration and encouragement to get plugged into it.
+
+** Ember ideas meeting (11/9)
+(Jamie) Sharing lessons learned after building an app or showing a tool - People tend to over-focus on these
+Would like to see something more cultural or visionary
+(Jade) intermediate level content
+
+Topics :
+(Jaime)
+Web platform features that ember can influence (typography, intl, security, etc)
+Accessibility
+(Yehuda)
+Topics that help people understand the bigger picture - what service worker means to building an app
+Intermediate Talks
+(Ed)How to level up from a learning perspective - how to become an intermediate user. Liz Bailey at Wicked Good: how this part of ember works - how to dive in and read a piece of code.  Inspires with confidence
+(Yehuda) debugging with empathy from last year is an example, also the adapter layer of Ember 

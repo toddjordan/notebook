@@ -5,5 +5,39 @@
 
 ** TODO get acceptance tests back running
    SCHEDULED: <2016-10-20 Thu>
+   CLOCK: [2016-11-11 Fri 10:45]--[2016-11-11 Fri 16:37] =>  5:52
    CLOCK: [2016-10-21 Fri 10:10]--[2016-10-21 Fri 16:37] =>  6:27
 
+*** Pendo script adds timer - analytics.js
+
+*** application.js - ember run debounce in observer (clean up)
+
+** Timers pushed
+
+*** ember-purecloud-components/services/feature
+- [X] Cancelled (1)
+2 _batchRequest  (Ember.run.Later)
+
+*** web-directory/utils/timeout-promise
+web-directory/services/preferences: registerNamespaces (on init) RSVP.all
+web-directory/services/presence: loadAllPresenceDefinitions ()
+
+*** web-directory/services/pigeon
+init (Ember.run.later)
+
+*** webrtc-devices/mixins/device-enumeration
+init (Ember.run.next)
+
+*** web-directory/services/webrtc
+_timeoutTurnServers (Ember.run.later (6 hours!))
+_videoBridgeTimer (Ember.run.later)
+** Timers Cancelled
+
+*** timeout-promise (promise resolution) - localforage
+
+*** timeout-promise (promise resolution) - feature: _batchRequest
+
+
+** Auth
+resolvedModel needs to have an access_token
+directory.extractAuthData - Do I need to add auth_token to this within my test authenticator?

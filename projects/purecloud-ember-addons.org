@@ -1,13 +1,12 @@
 * PureCloud Common Addons                                :purecloud:projects:
+
 ** Addonization
 *** ember-purecloud-style
 **** TODO Talk to UX (casey?) about updating pure-cloud-style-guide for icons, etc
-     SCHEDULED: <2016-11-07 Mon> DEADLINE: <2016-11-07 Mon>
-
 *** ember-purecloud-components
 **** DONE common less variable sharing in ember-purecloud-components
      SCHEDULED: <2016-10-18 Tue>
-**** TODO Add eslint, fix style
+**** DONE Add eslint, fix style
      SCHEDULED: <2016-11-04 Fri>
 ** Addon Dependencies
 [[file:~/Desktop/purecloud-addon-dependencies.png][addon dependency graph]]
@@ -21,7 +20,5 @@
 ** Questions
 *** utils addon?
 
-** Jira
+** Links
 [[https://inindca.atlassian.net/browse/UI-2767][UI-2767 PureCloud Common Component Infrastructure]]
-[[https://inindca.atlassian.net/browse/UI-2768][UI-2768 Provide Common Styles across PureCloud Components and Applications]]
-[[https://inindca.atlassian.net/browse/UI-2769][UI-2769 Provide Tree Shaking for Common Ember Component Addon]]

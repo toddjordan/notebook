@@ -8,13 +8,15 @@
     :ORDERED:  t
     :END:
 *** TODO learning team meeting                                        :teams:
-    SCHEDULED: <2016-11-17 Thu +1w>
+    SCHEDULED: <2016-12-01 Thu +1w>
+    - State "DONE"       from "TODO"       [2016-12-02 Fri 13:48]
+    - State "DONE"       from "TODO"       [2016-11-18 Fri 11:23]
     - State "DONE"       from "TODO"       [2016-11-04 Fri 11:38]
     - State "DONE"       from "TODO"       [2016-10-21 Fri 10:00]
     :PROPERTIES:
-    :LAST_REPEAT: [2016-11-04 Fri 11:38]
+    :LAST_REPEAT: [2016-12-05 Mon 13:48]
     :END:
-**** TODO Summarize Tutorial discussion
+**** DONE Summarize Tutorial discussion
      DEADLINE: <2016-11-05 Sat>
 
 ** Tutorial                                                        :tutorial:
@@ -26,10 +28,26 @@
 - [ ] Create Detailed Plan/Tasks in github (or trello)
 *** DONE move ember-cli-tutorial-style from my repo to ember-learn
 *** TODO Tutorial is garbage for new users issue #1708
-https://github.com/emberjs/guides/issues/1708
+    https://github.com/emberjs/guides/issues/1708
 *** TODO replace mirage issue
 https://github.com/emberjs/guides/issues/1695
-- [X] Link to learn notes on discussion
+**** Proposed Tutorial Menu
+- Creating Your App
+- Planning Tasks
+- Routes and Templates
+- The Model Hook
+- Installing Addons
+- Building a Simple Component
+- Creating a Handlebars Helper
+- Using Ember Data
+- Building a Complex Component
+- Services and Utilities
+- Nested Routes
+- Deploying
+
+Ember Data moves back to after the simple component and handlebars helper sections.
+We push Mirage
+
 ** Guides
 *** TODO Improve Testing Guides
 Wrapped into [[https://github.com/emberjs/guides/issues/1632][#1632 Improve Testing Guides]]
@@ -39,10 +57,10 @@ Wrapped into [[https://github.com/emberjs/guides/issues/1632][#1632 Improve Test
 
 ** API Docs Emberization
 [[https://github.com/toddjordan/ember-api-docs][Github Repo (Fork)]]
-*** TODO Move to ember-learn 
+*** DONE Move to ember-learn 
 *** DONE Talk to 5tanley about helping                                :teams:
     DEADLINE: <2016-10-27 Thu> SCHEDULED: <2016-10-27 Thu>
 
 *** DONE Get running locally
 
-*** TODO Task it out
+*** DONE Task it out

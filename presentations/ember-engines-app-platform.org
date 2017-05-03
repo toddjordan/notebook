@@ -4,7 +4,102 @@ Engines allow different applications to be bound in a single UI and share common
 In this short talk we will demonstrate the power of engines by creating a simpla application platform.
 The application platform will allow developers to install and integrate one or more applications into its existing shell.
 
+** Handling authentication
+
+*** TODO Ask justin if any considerations for simple auth
+** Handling internationalization
+*** TODO Ask drew/justin how translations are applied.  Is it just in web-directory?
+** Handling styles
+*** TODO Describe sharing styles via an addon
 ** Create the ember application shell app
-** Create a new engine
+*** TODO ???
+** Creating a new engine
+*** TODO How do we document this to teams?
+*** TODO How to we incorporate it?
 ** Update addon to write to config
+*** TODO ???
 ** Install the engine into the application shell
+
+
+** HI!
+
+** What's this about
+Much of the talks have focused on the technical side of engines and how to get started on them.
+There have been great talks on this subject (trent, dan)
+In this talk I'm going to focus on real world implementation of engines to create an enterprise level application platform.
+
+* Our Engines
+
+** A 2 Minute History Lesson
+
+- Large team, forged by acquisitions.
+- Various apps built separately on different UI technologies
+- Wanted a cohesive user experience across our application suite
+- Ember team's app became the application shell
+- Hooked other apps in by iFrame
+- Engines was the ignition to get apps migrated to Ember!
+
+** The Little Engines that Could?
+
+- Engine Benefits
+-- Namespaced
+-- Routable
+-- Lazy Loading
+-- Separate Source Management
+-- Asset Sharing
+
+** Teams want to
+- Own release cadence
+- Own Development Standards
+- Be Protected from Each Other
+
+* Zoom in to Technical
+
+** How Does it All Work?
+
+** How Do We Share Stuff?
+
+- Prefer 1 way dependencies
+
+** How Do We Manage All the Dependencies?
+
+- Listing engines+versions on start
+- Linting dependencies
+
+** Authentication and Security
+
+- ember-simple-auth in engines
+
+** How Do We Deploy?
+
+- Each Engine has its own Jenkins build
+- Each team can set up its own verification rules
+- Heavily utilize pre-push hooks
+- Automatic semver handling
+- Deployment gate depends on external automated tests.
+
+** What Problems have we run into?
+
+- Are we really protected?
+-- Dependency conflicts
+-- Semver breaks!
+
+* Zoom out to Cultural
+
+** Team Autonomy
+
+
+
+** Herding the Cats
+
+** Documenting Common APIs
+
+- ember-freestyle
+
+** Introducing Cross Cutting Processes and Code (Internal RFCs!)
+
+** Sharing Information, Best Practices (The Ember Guild)
+
+** Encouraging Contributions
+
+* The Future

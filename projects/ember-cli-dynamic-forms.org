@@ -40,3 +40,11 @@ https://github.com/toddjordan/ember-cli-dynamic-forms/issues/3
 ** TODO custom event handler                                    :enhancement:
 
 https://github.com/toddjordan/ember-cli-dynamic-forms/issues/2
+
+** TODO still write bower deps when conflict                            :bug:
+
+https://github.com/toddjordan/ember-cli-dynamic-forms/issues/44
+CLI issue: https://github.com/ember-cli/ember-cli/issues/6334
+
+*** DONE Pair with Nathan Hammond to get started 
+    CLOSED: [2016-11-11 Fri 14:08] SCHEDULED: <2016-11-11 Fri 13:30> 

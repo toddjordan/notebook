@@ -1,0 +1,44 @@
+
+
+* Guild Announcement
+As more and more teams are developing applications using EmberJS onto web-directory, we'd like to continue our work this year in creating a community around developers working in the technology as well as for anyone interested in learning.  There are also a lot of infrastructure and cross-cutting design things to work through this year.
+
+Therefore we'd like to get slightly more organization around this community, but still keep an open source culture and team autonomy around it.  That's why I'd like to put just bit more organization and thought and some things.  
+
+** Last year our Ember developers started getting together and started up a few Ember-related community activities:
+- We did a periodic Ember Best Practices meeting where different developers presented on parts of Ember development and gave tips and references to help people incorporate them into their own work.
+- We also created an "EmberJS" Purecloud Chat room where anyone can post questions/topics to,or just lurk and find out stuff going on in the Ember community.
+- We brought in some in-house Ember Education through Global Ember Meetup
+- We started on some common addons and infrastructure to be shared between engines, such as jenkins engine deployment, ember-purecloud-components and ember-purecloud-style
+
+** This year...
+
+We'll give ourselves a name: the Ember Guild
+
+*** Who?
+Membership is open, there are no tests or feats of strength to get in.  
+There'll be a few community leaders based on their current participation in infrastructure development and group discussions.  We'll try to make sure all questions are fielded.  Please also tap these folks for reviews review input on PRs.  This will be a fluid group over time based on who's able to contribute (we'll have have day jobs too ;)
+Drew Gaynor
+Omar Estrella
+Justin Ray
+Todd Jordan
+** What?
+Here are some functions of the guild:
+*** Communication of Best Practices
+**** Best Practice meetings to continue on an every other week cadence.  Will be recorded.  We ask that one team member for each app/team attend to disseminate information.   the more the better, and speaking to share something cool or that you feel is a successful practice is encouraged :-)
+**** While we will normally side with the Ember community best practice for things, We will run into some situations where we need to decide strategies for solving specific problems across applications.  We'll want a process for getting some consensus and communicating these types of solutions.  (an example might be form validation, or app versioning)  We may adopt an RFC process similar to what Ember does for this (stay tuned).
+*** Creation of common Infrastructure
+**** We'll continue to work on Continuous Integration and Deployment, common components and services, and test infrastructure.  We'll use an open source model, so as you find your team creating new functionality for your projects that might be beneficial across app, you'll be encouraged to share through our common repos.
+**** Some folks will, as needed, spin off focused to work on hot infrastructure needs.  We'll track some of these things in Jira (details soon)
+*** Community-Driven Help and Guidance
+**** The EmberJS Purecloud Group is there for assistance, guidance, and communication.  Like OSS slack or IRC where all our encouraged to pitch in with both questions and answers.
+**** Community leaders can participate in Ember-related pull requests in common components, as well as in individual apps.
+** How do I get involved?
+1. Join the discussion in the EmberJS purecloud group if not already
+2. Start attending the EmberJS meeting every other week ( or catching the recording)
+3. Take a look at previous best practices meetings.  They are all in the Ember Resources workspace on SCA, with the tag "ember best practices"
+4. Pull the common ember repos be thinking about what components that you have that others can use, and vice versa
+5. Consider community leaders for PR reviews, in addition to your team's tech leads + peers
+
+Thanks and looking forward to a great year!
+Todd

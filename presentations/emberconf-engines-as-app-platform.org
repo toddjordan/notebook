@@ -1,0 +1,61 @@
+** Facts about purecloud
+
+** Why Engines
+Our Story
+Knockout based Customer Service UIs
+Angular based Admin UIs
+Ember based Collaboration UIs
+
+In this environment, Ember won (gif)
+Why?
+Engines!
+- Team autonomy
+
+** Understanding the Platform
+
+** Delivery (Moving the Boat)(gif)
+
+- Weekly Releases!
+- Feature Toggles
+- Dogfooding
+- Automation
+
+** Upgrading the plaform
+
+*** Ember
+- Feature Branch
+- Each app(engine) and ecosystem addon must pass ember try
+- Battery of Automated Tests on feature branch -verify with perry
+- Staging Environment
+
+** Writing Tests
+- local battery, unit/integration
+- acceptance tests more complicated
+
+** Adding an Application
+- script?
+- navigation
+
+** Security
+- esa with a 3rd party (oauth)
+- permissions
+
+** External Apps (the future)
+- current approach with iframes, will always be an options
+
+** Team Culture
+- Large team - diverse practices
+- Developer Tests - varying views
+- Teams desire autonomy
+- regressions
+
+*** Bringing the Team together (Guild)
+
+- Guild RFC Process
+
+** Tweets
+I'm speaking at EmberConf this year on the BonusConf day on our use of Ember Engines at Genesys. http://emberconf.com/speakers.html#todd-jordan
+
+Engines are an awesome addition to the Ember ecosystem.  They allow you to scale your application, and even combine multiple applications under a single UI.
+
+

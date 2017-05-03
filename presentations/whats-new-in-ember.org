@@ -1,0 +1,126 @@
+[[https://youtu.be/OcUzuQ_31co?list%3DPL4eq2DPpyBbmrPasP06vK7cUkPUCNn_rW][EmberCamp London 2016 Keynote]]
+Tom Dale mentions Ember X?
+
+[[https://github.com/emberjs/rfcs/pulls][Ember RFCs]]
+
+[[https://github.com/emberjs/rfcs/pull/176/files][Javascript Module Unification RFC]]
+
+[[https://github.com/emberjs/rfcs/pull/119][Test Unification RFC]]
+
+
+* Presentation Outline
+
+** Keeping up with Ember
+
+** Who Am I?
+
+** Stability Without Stagnation
+
+** How To Keep Up
+
+*** The RFC Process
+
+*** The Conferences
+
+*** Canary
+
+- Feature toggles
+
+*** Newsletters and podcasts
+
+- Ember Weekly
+- Ember Times
+- Ember Weekend
+- The Frontside 
+** So What's New and What's Coming
+
+*** Engines
+
+Allows for seperately maintained Ember apps under one main application.
+
+Official support in 2.8.
+Use in conjunction with the addon
+Lazy Engines now a thing
+
+*** Glimmer 2
+
+Came out with 2.10
+Improved Perfomance, smaller package size
+Groudwork for the good stuff
+Written in a modular way where you could use just Glimmer in your app.
+
+- Fastboot rehydration
+- angle brackets!?
+
+*** JavaScript Module API
+
+Currently everything is imported/namespaced under Ember.
+RFC split Ember up into separately importable modular packages
+Scoped Packages! `@ember/component`
+Utility functions as named exports `import EmberObject, { get, set } from "@ember/object"`
+One level deep to avoid being java
+Functions will no longer act as namespaces (no more Ember.run vs. Ember.run.schedule)
+Allows for builds to be smarter about packaging during builds (tree shaking)
+See the modules: https://github.com/emberjs/rfcs/blob/master/text/0176-javascript-module-api.md#addenda
+Try the shim! https://github.com/DockYard/ember-new-modules-shim
+
+*** Module Unification
+
+- Quest Issue (link?)
+
+Ember data concepts brought under individual directories
+Components can live specific to routes or generally
+Tests live alongside classes they are testing
+
+at the top level:
+- ui
+- ui/components
+- ui/partials
+- ui/routes
+- ui/styles
+- services
+- utils
+- data
+- data/models
+- data/transforms
+- init
+- init/initializers
+- init/instance-initializers
+
+*** Grand Testing Unification
+https://github.com/rwjblue/rfcs/blob/1ede9e34eebaca147cd1d6914ed002c34896c107/text/0000-grand-testing-unification.md
+
+Acknowledgement that Ember Testing doesn't do asyc as well as it could.
+Instead of using helpers like "andThen", use language features such as async/await
+Make it consistent across test types
+
+Old Way
+
+#+BEGIN_SRC js
+fillIn('.display-title', 'Hello!');
+click('.update-display-title');
+andThen(() => {
+  assert.equal(Ember.$('.display-title').text(), 'Hello!');
+});
+#+END_SRC
+
+New Way
+
+#+BEGIN_SRC js
+await this.fillIn('.display-title', 'Hello!');
+await this.click('.update-display-title');
+
+assert.equal(this.find('.display-title').text(), 'Hello!');
+#+END_SRC
+
+Other sugar
+helper registration
+waiter registration
+
+*** Other RFCs of note
+
+- Router Service
+  
+** What About the Ecosystem?
+
+*** 

@@ -1,0 +1,12 @@
+
+* Engines for an App Platform
+
+* Moving a large legacy ember app to acceptance testing
+
+* API docs online and off with pouchdb
+
+* Clojure and REPL
+
+* Emacs Customization
+
+

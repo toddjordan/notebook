@@ -1,0 +1,11 @@
+*** Ruby Repo
+https://github.com/triangleember/triangleember.github.io
+
+*** Meetup API Key
+2d497510290132156413536367e7e27
+
+https://secure.meetup.com/meetup_api
+
+*** Signed URL
+https://api.meetup.com/2/events?offset=0&format=json&limited_events=False&group_urlname=Triangle-Ember&page=200&fields=%22%2C%22link%22%3A%22https%3A%2F%2Fapi.meetup.com%2F2%2Fevents%22&order=time&status=upcoming&desc=false&sig_id=5740130&sig=505b9519c7532177584736a57081b9110513d64a
+

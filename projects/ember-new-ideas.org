@@ -1,0 +1,10 @@
+
+** Ember Mode Improvements
+- generate helpers
+- generate test helpers
+- jump to test
+- yas snippets?
+- addon support
+- handlebars completion, better highlighting
+
+** Handlebars repl?

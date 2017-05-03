@@ -1,0 +1,7 @@
+* Triangle JS Lightning Talks, Tuesday December 13
+  SCHEDULED: <2016-12-13 Tue>
+http://meetu.ps/333QXh
+** Ideas
+*** Creating an Ember Engine
+*** An Ember app in 10 minutes
+*** 

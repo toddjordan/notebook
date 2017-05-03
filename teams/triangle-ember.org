@@ -1,0 +1,11 @@
+* Events
+** DONE Hack night after Thanksgiving                             :scheduled:
+   SCHEDULED: <2016-11-28 Mon>
+Cafe De Los Muertos, Raleigh
+https://www.meetup.com/Triangle-Ember/events/235487481/
+** Hack night December
+** Hack night January
+** Meetup Early December
+** Joint Meetup with Ruby (January?)
+Location SB?
+** Joint Meetup with TriJS (February)

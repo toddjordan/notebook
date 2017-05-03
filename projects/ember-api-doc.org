@@ -1,0 +1,80 @@
+https://github.com/emberjs/website/issues/2452#issuecomment-196292300
+* Tasks
+Updates for EmberConf:
+** Remove Pouch dependency, load doc contents as static from S3
+** Add package concept to schema Package -> Module -> Class
+** Update left nav to have expandable packages
+
+* notes
+Getting rid of csp-report errors:
+Add hostname=localhost to .ember-cli
+
+* Switching the backend
+
+** Copy static output to backend
+** Specify server
+** Read data from server
+
+* Design
+** S3 Makeup
+*** Each Class/Module is a document
+*** path: <project>/<version>/<type>/<name>
+example: ember/2.11.0/class/Component
+*** Each version has a manifest
+contains the list of classes/module paths for a version
+
+** Client Behavior
+*** Initial Load
+**** Load Manifest
+try indexedDB first
+fetch from server
+**** load data for current route
+try indexedDB first
+fetch from server
+**** kick off service worker/app cache based on manifest
+iterate the list download and store to indexedDB
+
+*** Order
+transition jsonapi-doc output to a file hierarchy
+generate manifest
+fetch manifest and store to indexedDB
+fetch initial route data and store to indexedDB
+replace pouch adapter store references with indexedDB calls *
+update fastboot *
+Store app assets in service worker
+have service worker background download based on manifest *
+Store app assets in app cache (if service worker unavailable)
+have app cache background download basedon manifest *
+Expandible Left Nav (support for js module api) *
+
+
+*** Application Assets
+**** Chrome/Firefox: Service Workers
+**** Other Browsers: App Cache
+*** Data
+**** IndexedDB
+
+
+
+Hi!  Working on an ember successor to the api docs site that's a PWA with service workers. 
+This is my first foray into service workers, so I wanted to run this approach by you guys...
+
+App: 
+- User visits a route (ex /ember/v2.11.2/classes/Ember.Component.html)
+- App fetches a manifest json file for a given version of the project (ember v2.11.2, etc)
+  The Manifest contains the names/urls of all the items in the project for that particular version.
+- Also fetches the doc file (json) the item the route is pointed at (for example Ember.Component)
+
+Service Worker:
+- registered when the app loads in the browser
+- listens for the fetch of the manifest.  
+-- attempts to load it from cache if there, otherwise fetches from the server.
+-- returns the result from either the cache or the server as the response.
+-- kicks off a process that goes through the list of items, fetching each from its url to hydrate the cache.
+- listens for the fetch of a doc file
+-- Each individual item fetched by the app (classes, modules, etc) are cache first, falling back to a server fetch.
+- Falling back to app cache: https://github.com/w3c/ServiceWorker/issues/697
+
+[[https://github.github.io/fetch/][fetch API]]
+
+

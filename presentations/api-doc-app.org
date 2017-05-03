@@ -1,0 +1,11 @@
+* Magnum a.p.i
+[[[[file:~/presentations/api-docs/]]knight-rider.gif]]
+* Version Switching
+* Private Toggling
+* Fastboot - seo
+* Fastly SPEED
+* Heroku Hosting
+* PWA - Service Workers and AppCache
+* Future module support
+* Beta!
+* A Team

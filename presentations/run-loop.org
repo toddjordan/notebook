@@ -1,0 +1,42 @@
+* Why the Run Loop?
+First name/Last name computed example
+
+* How does it Work?
+Queues
+- sync
+- actions
+- routerTransitions
+- afterRender
+- destroy
+
+* How the run loop traverses buckets
+a b c d e
+1. check a for functions
+2. run functions if exist
+3. check a again
+4. check b for functions
+5. run functions if they exist
+6. check a for functions
+7. run functinos if they exist
+8. check a again
+9. check b for functions
+10 run functions if they exist
+
+* autoRun
+Calls to run.schedule* and run.once have code that approximates starting a run loop.
+This is not turned on in tests, so you have to be in a run loop to run these.
+Also auto run is slightly lest performant (waits a millisecond to flush the loop)
+
+* How tests rely on the run loop and why
+`wait` waits for all runloops to end, all ajax requests to finish, and all rsvp promises to resolve.  
+Doing stuff outside the run loop puts tests in danger odd results. 
+hello set on destroyed object!
+
+It sucks,
+To avoid it write tests with your code to idenify things before they get too complex to debug.
+Be sure to wrap non ember async functions in run calls (and avoid them where you can)
+
+* References
+https://teamgaslight.com/blog/a-beginners-guide-to-the-ember-run-loop
+https://github.com/eoinkelly/ember-runloop-handbook
+https://youtu.be/G4DdNMLubgQ

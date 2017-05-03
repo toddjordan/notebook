@@ -3,9 +3,11 @@
    SCHEDULED: <2016-11-28 Mon>
 Cafe De Los Muertos, Raleigh
 https://www.meetup.com/Triangle-Ember/events/235487481/
-** Hack night December
-** Hack night January
-** Meetup Early December
-** Joint Meetup with Ruby (January?)
-Location SB?
-** Joint Meetup with TriJS (February)
+** DONE Hack night December
+** DONE Hack night January
+** DONE Meetup Early December
+** TODO May Meetup at InIn
+** TODO Joint Meetup with Ruby (Jun)
+Location ?
+- [ ] Follow up with Brandon
+** TODO Joint Meetup with TriJS (TBD)

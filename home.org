@@ -26,3 +26,5 @@ Giving org-mode a try for a while, though it may end up a mess for me :-)
 ** Teams
 
 [[file:teams/ember-learn.org][Ember Learning Team]]
+[[file:teams/ember-guild.org][Ember Guild]]
+[[file:teams/triangle-ember.org][Triangle Ember]]

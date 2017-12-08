@@ -1,0 +1,35 @@
+* testing engines
+* data driven UI - A thought exercise
+With component helper and contextual components, you can define an entire application with data.
+
+- Why would you do this?
+-- customer driven UIs
+-- form UIs that have tons of permutations
+
+- What would we need to do
+-- decide on a json format to describe your UI
+-- write code that turns the json to template form
+
+* paying off technical debt 
+** tip of the spear
+** lts
+
+-- (lts vs latest)
+-- beta branch
+-- deprecations
+-- old practices
+* mocking your socks off
+** mock socket
+** creating a "mirage-like" db
+* how ember won
+-- engines
+-- cli
+-- conventions
+-- addon ecosystem
+-- performance
+
+* practical async debugging in Ember
+-- listing timers
+-- monitoring promises
+-- writable chain watchers
+

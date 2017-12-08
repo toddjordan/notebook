@@ -2,7 +2,7 @@
 
 Giving org-mode a try for a while, though it may end up a mess for me :-)
 
-** Presentations
+** [[file:presentations/][Presentations]]
 
 *** Ember Best Practices Series
 
@@ -10,7 +10,7 @@ Giving org-mode a try for a while, though it may end up a mess for me :-)
 [[file:presentations/ember-testing.org][Ember testing best practices]]
 [[file:presentations/component-patterns.org][Ember Component Patterns]]
 
-** Projects
+** [[file:projects/][Projects]]
 
 *** OSS
 
@@ -23,8 +23,12 @@ Giving org-mode a try for a while, though it may end up a mess for me :-)
 
 [[file:projects/web-directory-support-acceptance-test.org][Support Ember Acceptance Test in Web Directory]]
 
-** Teams
+** [[file:teams/][Teams]]
 
 [[file:teams/ember-learn.org][Ember Learning Team]]
 [[file:teams/ember-guild.org][Ember Guild]]
 [[file:teams/triangle-ember.org][Triangle Ember]]
+
+* [[file:events/][Events]]
+
+* [[file:writing/][Writing]]

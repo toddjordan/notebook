@@ -1,0 +1,11 @@
+* What about globals/namespaces?  how do we @extend? (2 different left nav modes?)
+** namespaces are determined by @static and @class
+* We should document import examples to make it obvious how to use.
+* TODO: Url processing for "@"(url encode)
+* What to do about sub-packages?  Submodules?
+** Do we want exisiting submodules gone?(ember-glimmer, ember-metal, ember-routing)
+* TODO: change processing for submodules
+** We want to show top level modules, but not all submodules (at least on the top level).
+** List submodules nested underneath?
+* How to handle function exports with no class?  ex. polyfills
+** Can we document a function without pinning it to a class?

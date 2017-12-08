@@ -1,0 +1,358 @@
+* Guide to Testing in Web Directory
+
+** Unit Testing
+
+[Ember unit tests](https://guides.emberjs.com/current/testing/unit-testing-basics/) are designed for testing small "units" of code, isolated from the system around them.
+Often a unit represents a function, but can be a combination of classes or functions that that perform a specific task.
+
+Common use cases for unit tests include...
+
+- Methods on Services
+- Utility Functions
+- Ember Data Flows (with stubbed ajax)
+- Any function that has logic that would be beneficial to verify and have regression protection on.
+
+*** Populating The Registry
+
+Ember's registry is not populated when running unit tests, so any collaborating class that is injected needs to be defined and registered.
+You will often need to register things like injected services, ember data objects, template helpers, and sub-components.
+
+**** Needs
+
+Unit tests have a `needs` block that registers existing classes, so that when the test is run, the given classes are available for injection.
+
+The following example registers collaborating classes for a geolocation service:
+
+```
+// tests/unit/services/geolocation-test.js
+moduleFor('service:geolocation', 'Unit | Service | Geolocation', {
+    needs: [
+        'model:geolocation',
+        'model:coded-geolocation',
+        'model:geolocation-settings',
+        'adapter:geolocation',
+        'adapter:coded-geolocation',
+        'adapter:geolocation-settings',
+        'serializer:geolocation',
+        'serializer:coded-geolocation',
+        'serializer:geolocation-settings',
+        'service:store',
+        'service:application'
+    ],
+
+});
+```
+
+For most cases using the `needs` property is discouraged, because the classes registered with `needs`,
+then pull in their own dependencies (which may also need to be defined in `needs`), thus breaking
+the principle of isolation for unit tests, as  well as executing code outside the intention of the original test,
+such as async timer functions which can cause delays, errors, and leaked state.
+
+**** this.register
+
+For any injected service that you don't intend to explicitly test in your unit test, you should take advantage of Ember's `register` function
+available in the test context.  In the same geolocation example, we want to stub out the session service with our own object:
+
+```
+// tests/unit/services/geolocation-test.js
+moduleFor('service:geolocation', 'Unit | Service | Geolocation', {
+    beforeEach() {
+        this.register('service:session', Ember.Service.extend({
+            person: {
+                guid: '1234',
+                geolocation: {
+                    id: '72065ecf-2cd8-417d-bba0-2019815e966e',
+                    type: 'web'
+                }
+            },
+            publicApiUser: {
+                geolocation: {
+                    type: 'web'
+                }
+            },
+            refreshPublicApiUser() {
+                return Ember.RSVP.resolve();
+            },
+            personId: '1234'
+        });
+    }
+});
+```
+
+**** mockServices
+
+In cases where you have a lot of service dependencies, there is a test helper called `mock-service` you can use to register a bunch of fake services at once.
+The mockServices function iterates through array of objects containing the name and stubbed class, and registers them (using `this.register` under the covers).
+In the geolocation test example, we've added a mock service call to show registration of multiple dependent stub services.
+
+```
+// tests/unit/services/geolocation-test.js
+import mockServices from '../../test-helpers/unit/mock-service';
+
+// add stub functions and properties as needed for the test
+const STUB_SERVICES = [
+    {
+        name: 'search',
+        mock: Ember.Service.extend()
+    },
+    {
+        name: 'preferences',
+        mock: Ember.Service.extend()
+    },
+    {
+        name: 'intl',
+        mock: Ember.Service.extend()
+    }
+];
+
+moduleFor('service:geolocation', 'Unit | Service | Geolocation', {
+    beforeEach() {
+        mockServices(STUB_SERVICES, this);
+    }
+});
+```
+
+*** The Run Loop
+
+The Ember run loop autorun functionality is disabled in unit tests, meaning Ember will not automatically create a run loop where none exists.
+This shows up when unit testing components that either have direct function invocations from the test,
+or have async callbacks that are invoked by 3rd party libraries.
+
+Therefore when invoking component functions directly, you'll need to wrap the call in an `Ember.run`.
+
+```
+test('should invoke something on a component', function (assert) {
+    let component = this.subject();
+    Ember.run(() => component.doAThing('hello world');
+    assert(this.$().text().trim(), 'hello world');
+});
+```
+
+See the [Ember Best Practices session on the Ember run loop](https://apps.mypurecloud.com/s/#/1/6igpwjt765djzhp6tzcwf4vldi) to better understand the topic.
+
+** Component Integration Tests
+
+[Component Integration tests](https://guides.emberjs.com/current/testing/testing-components/) populate Ember's registry, so there is no need to register existing Ember objects.
+Their primary use is to test components in an environment that better simulates what they would run on in a production system.
+
+The test developer creates the component with an inline template and provides arguments via the test's context.
+Once rendered, the test interacts with the component via DOM events.
+
+*** Stubbing services
+
+In most cases it is desirable stub dependent services away from a component in an integration test.
+Stubbing in integration tests is done similar to unit tests, where you can call `this.register` to override the default implementation.
+
+Additionally, you can inject services into your properties in your test's local context by calling `this.inject.service('service:yourservice')`.
+Do this to read and update service state during your test.
+
+See the documentation on [stubbing services in component integration tests](https://guides.emberjs.com/current/testing/testing-components/#toc_stubbing-services) for more information.
+
+** Acceptance Testing
+
+Ember Best Practices Talks on Acceptance Testing
+
+- [Acceptance Testing in Web Directory - Todd Jordan - 11/14/2017](https://apps.mypurecloud.com/s/#/1/2pey2irnonehjpjb6q5eqqr2iu)
+- [Acceptance Testing with ember-cli-mirage - Mark DeLaVergne - 4/4/2017](https://apps.mypurecloud.com/s/#/1/m5ulbrmjdvcphcrg6l44bwznem)
+
+Acceptance tests treat the application as a "black box".
+The tests interact with the browser DOM as opposed to calling code APIs directly.
+The application in initialized as if a user was visiting the page, meaning all insitializers and instance initializers are run.
+
+Use Acceptance tests to verify interactions between various parts of the UI that cannot be effectively tested using integration or unit tests.
+
+We run acceptance tests in a separate browser process than the other tests to avoid state leakage.
+Since acceptance tests run the web directory initializers, global browser state is modified in several ways and not cleaned up when the test completes.
+
+Run just acceptance tests by executing `npm run acceptance` from the command line.
+
+Running the test suite using the testem CI config file, `npm test` will run the whole suite in 2 separate processes, separated by test type.
+
+*** Populating server data
+
+Web directory's acceptance tests make use of [ember-cli-mirage](http://www.ember-cli-mirage.com/) to stand in for network calls,
+so that acceptance tests can run self-contained, not requiring our microservice architecture.
+
+Mirage acts as a sort of simple service running on your browser.
+It uses [Pretender](https://github.com/pretenderjs/pretender) to stub the browser's `XMLHttpRequest` object.
+With mirage, you can specify response payloads to return based on request URLs.
+Create these URL to response mappings in mirage "[route handlers](http://www.ember-cli-mirage.com/docs/v0.3.x/route-handlers/)" defined in the file `mirage/config.js`.
+
+With route handlers you can map static javascript code as responses.
+In web directory we put static responses in separate javascript files in the `requests` directory, and load them via JavaScript imports.
+
+In addition to static javascript payloads Mirage also supports populating an internal [database](http://www.ember-cli-mirage.com/docs/v0.3.x/database/).
+The database is accessible as an argument in the route handler function, `schema.db` and can be access to fetch payloads.
+
+Mirage's database is populated either via [factories](http://www.ember-cli-mirage.com/docs/v0.3.x/factories/) or via [fixtures](http://www.ember-cli-mirage.com/docs/v0.3.x/fixtures/).
+
+Factories allow you to dynamically populate the database at runtime, and can be developed in a way to create randomized data.
+Once created, factories can be instantiated at runtime by calling [`server.create`](http://www.ember-cli-mirage.com/docs/v0.3.x/factories/#create) or [`server.createList`](http://www.ember-cli-mirage.com/docs/v0.3.x/factories/#createList).
+Fixtures are groupings of static data that you can apply to the database by calling [`server.loadFixtures`](http://www.ember-cli-mirage.com/docs/v0.3.x/configuration/#loadFixtures)
+
+
+*** Varying Data
+
+Often with your acceptance tests, you will want to vary user data per test and load different initial data to verify that the user interface properly responds to it.
+
+**** Data By User
+
+Web Directory Acceptance Tests allow for different sets of data per user.
+You can determine a user by inspecting the "Auth Bearer" token provided by the authentication process.
+In our acceptance tests we call the `authenticate` helper from ember simple auth to fool the application into thinking we are logged in,
+circumventing the login screen redirect.
+The login code puts the authenticated token we provide to that function in a request header.
+We can pull out that token from the request header and load specific data based on the value of the token.
+
+The example below loads a different user profile based on the token that is currently in the request object.
+The code then checks an object that maps that token to a user id to load that specific user's profile from the database.
+
+```
+    this.get('/platform/api/v2/users/me', (schema, request) => {
+        let token = request.requestHeaders.Authorization.split(' ')[1];
+        let userId = UserMap[token].id;
+        return schema.publicApiUsers.find(userId).attrs;
+    });
+```
+
+**** Data Per Test
+
+Mirage allows you to override mappings in the `config.js` file in specific tests.
+This is because the mirage `server` namespace is globally available in all acceptance tests.
+
+Here's and example of overriding a specific mirage route in a test:
+
+```
+test('I can override a mirage route', function (assert) {
+    server.get('/platform/api/something', function (schema, request) {
+        return {
+            whatever: 'I want to'
+        }
+    });
+    visit('/something');
+    click('.something');
+    andThen(function () {
+        assert(find('.something-else').text().trim(), 'something');
+    });
+});
+```
+
+You can also use this method to update the database prior to the test, using `server.create`, etc.
+See docs for details.
+
+### Stubbing services in acceptance tests.
+
+At times you may want to stub a specific service and supply your own implementation in your test.
+For this case we've provided two helper functions that you can access in your test.
+
+See the following example:
+
+```
+beforeEach() {
+    this.register('service:geolocation', Ember.Service.extend({
+        isEnabled: true,
+        isStarted: true,
+        isSwitchedOn: true,
+        currentPosition: {
+            coords: {
+                longitude: 999999999,
+                latitude: 9999999
+            }
+        }
+    }));
+}
+```
+
+In the above example we've provided a custom geolocation service via the function `this.register`.
+This new service will take the place of the existing web directory service for the duration of your test.
+
+If you want to modify an existing service there is also a function we provide to fetch existing service instances.
+
+See the following example:
+
+```
+test('should react to a geoloation change', function (assert){
+    let geolocationService = this.lookup('service:geolocation');
+    Ember.set(geolocationService, 'currentPosition', {
+        coords: {
+            longitude: 8888888,
+            latitude: 8888888
+        }
+    });
+    ...
+});
+```
+
+In this case we wanted to update the current position for our test.
+With the `lookup` function, we can fetch any item in the registry at runtime.
+
+### Acceptance Testing in Engines
+
+Engines run acceptance tests through the dummy app, which is an Ember application that gets installed with new addon projects.
+
+To run acceptance tests on an engine addon, you must first mount then engine to the dummy app.
+Since the dummy app is the same as a regular ember app,
+you can follow the instructions on mounting an engine from the [engine documentation](http://ember-engines.com/guide/mounting-engines).
+
+```
+// tests/dummy/app/router.js
+Ember.Router.map(function () {
+    this.mount('ember-engine-antlers', { as: 'antlers', path: '/'});
+})
+```
+
+Also, since our engines take advantage of external services from the parent app,
+we will also need to share the same named services from the dummy app.
+See engines documentation for more information on [sharing services](http://ember-engines.com/guide/services).
+
+```
+// tests/dummy/app/app.js
+engines: {
+    emberEngineAntlers: {
+        dependencies: {
+            services: [
+                'application',
+                'session',
+                'store'
+            ]
+        }
+    }
+}
+```
+
+In addition to declaring shared services in `app.js`, the dummy needs to actually create these services and register them in the container.
+There are a couple of ways to do this.
+
+One option is to generate the services using Ember CLI:
+
+```
+ember g service application --dummy
+ember g service application --dummy
+ember g service store --dummy
+```
+
+These commands will create shell service files that you can update with stubbed functions and properties in order to stand in for services
+that the engine depends on.
+
+The other option is to create the services via the dummy app's resolver.
+
+#+NAME tests/dummy/app/resolver.js
+#+BEGIN_SRC Javascript
+// stub specific functions and properties as needed
+let stubbedServices = {
+    'service:application': Ember.Service.extend(),
+    'service:session': Ember.Service.extend(),
+    'service:store': Ember.Service.extend()
+}
+
+export default Resolver.extend({
+    resolveOther(parsedName) {
+        let registeredItem = stubbedServices[parsedName];
+        if (registeredItem) {
+            return registeredItem;
+        }
+        return this._super(...arguments);
+    }
+});
+#+END_SRC
+

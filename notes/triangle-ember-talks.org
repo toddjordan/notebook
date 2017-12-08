@@ -1,0 +1,7 @@
+<iframe src="https://player.vimeo.com/video/174421457" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/174421457">Multi-Team Development by @tddjordan</a> from <a href="https://vimeo.com/globalembermeetup">Global Ember Meetup</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+<iframe src="https://player.vimeo.com/video/182941645" width="640" height="240" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/182941645">Turning Learning Into Teaching by Todd Jordan</a> from <a href="https://vimeo.com/globalembermeetup">Global Ember Meetup</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jNhxQkQyRi0" frameborder="0" allowfullscreen></iframe>

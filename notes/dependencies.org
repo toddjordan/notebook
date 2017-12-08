@@ -1,0 +1,202 @@
+* Managing Dependencies
+
+![Dependency Build](images/dependencyBuild.png)
+
+From a 10,000 foot view, dependencies ember builds in 2 major parts:
+
+1. Using `package.json` and `yarn.lock`, yarn builds a tree of packages in the node_modules directory.
+2. ember-cli traverses that tree and builds a flat JavaScript file called `vendor.js`.
+
+** Package Dependency Types
+
+dependencies: packages that need to be shared with the consuming app.  When you run `yarn` on the consuming app, it only brings in items from
+
+devDependencies: packages needed for building/testing the local add-on, but not needed by the app.  Ember source and test files are good examples of packages that should be devDependencies, since they are only needed by the local package for local build and test, and not needed by the parent app's build/packaging.
+
+Both peed dependencies and optional dependencies are not built into the final node_modules tree, but do affect execution of the yarn process.
+
+peerDependencies:  Peer dependencies are used by modules/addons to specify compatible libraries that should be used alongside the given package.  If peer dependencies aren't met then yarn may fail the install process.
+
+See [https://yarnpkg.com/en/docs/dependency-types](https://yarnpkg.com/en/docs/dependency-types) for more info.
+
+** Determinism
+
+For a given `package.json`, `yarn.lock`, and yarn version, yarn guarantees that the node modules structure will be the same.
+
+When yarn creates a dependency tree, it tries to install all dependencies in the root node_modules directory.
+Yarn will "hoist" up dependencies declared down the tree to the root.
+When there is a semver conflict between to dependencies, then yarn will elevate only one of the versions and keep the other version down the tree where the dependency is defined.
+
+See [https://yarnpkg.com/blog/2017/05/31/determinism/](https://yarnpkg.com/blog/2017/05/31/determinism/) for more insight.
+
+** Ember CLI non-determinism
+
+When Ember CLI runs its build, it traverses the node_modules tree and concatenates dependencies into a single JavaScript file.
+If it comes across multiple versions of a single dependency, it will overwrite the one that is already there.
+Therefore it is generally not desirable to have multiple versions of the same dependency, since its hard to tell which dependency that ember will "take",
+and if 2 different packages need to incompatible versions, 1 package will end up broken.
+
+There are some exceptions to the no duplication rule.
+Sometimes the Ember CLI build for the parent app needs certain public dependencies to build it, such as ember-cli-babel,
+but does not package that dependency into the vendor file.
+These are a limited set that are typically babel or broccoli libraries.
+
+** Debugging Dependencies
+
+*** Dependency Lint
+
+Web directory includes an ember addon called ember-cli-dependency-lint, that searches yarn's built node_modules tree for conflicting package versions.
+
+The dependency-lint addon generates testcases that check the dependency tree for duplicates, so that when you do get an unwanted conflict,
+you get a build failure instead of releasing potentially broken code.
+
+You can also run the utility manually by typing `ember dependency-lint` in the command line.
+
+When dependency lint fails, it gives a print out of the offending package and which dependencies it comes from.
+
+** Resolving Duplicate Dependencies
+
+When you find a dependency conflict you have a few choices of resolution:
+
+*** Fixing Dependency SemVer
+
+Often times a dependency conflict happens when one or more addons have conflicting version ranges of a dependency specified in their own `package.json`.
+This can simply be a result of a dependency being "pinned" to a specific patch or minor version, or an example of a real incompatibility between 2 of your packages.
+
+In some cases we just need to "bite the bullet" update the dependency to be in line with the rest of the dependency ecosystem.
+This might involve updating API calls to fix breaking changes that might result from the dependency version change.
+
+For example, version 0.4.1 of mirage depends on ember-lodash version `^4.17.3` of ember-lodash, while the rest of web-directory depends on version `0.0.11`.
+The newer version of ember-lodash introduces breaking changes, so to bring them in line with the new version of mirage we would have to fix the breaking changes everywhere where web-directory (and other addons/engines) are using lodash.
+Otherwise we have to back ember-cli-mirage down to a version what has a compatible lodash (which we currently are doing), or fork ember-cli-mirage to implement an alternative for the new lodash calls they are making.
+
+*** Working around Yarn Duplication Bugs
+
+Sometimes yarn duplications happen even when there are compatible SemVer ranges.
+This could be because of a couple of reasons.
+
+First, there a known yarn bug (reported by Xander!) that is still open where duplicate versions can be resolved during a `yarn upgrade`, even though there are compatible Semver ranges specified.
+
+See [https://github.com/yarnpkg/yarn/issues/3967](https://github.com/yarnpkg/yarn/issues/3967) for the gory details.
+
+The common workaround we've been using when we get a conflict between 2 seemingly compatible packages is to manually delete the packages from `yarn.lock` and rerun `yarn install`.
+
+We do not want regenerate the whole `yarn.lock` file because that could introduce upgrades that we are unprepared to test for.
+
+Additionally, using an older version of yarn, such as 0.27.1, may have a higher likelihood of running into duplicate resolutions because of other bugs that have since been fixed.
+At the same time, Yarn does not guarantee determinism between yarn versions, so if you install a lock file using yarn 0.27.1, you might be getting different results than another developer using 1.3.2.
+
+*** Using Resolutions
+
+Starting in Yarn 1.x, in your parent app you can tell Yarn which version of a dependency to pick.
+This will effectively hoist the chosen version to the root node_modules directory and remove the duplication.
+Use this in cases where a 3rd party addon uses an incompatible semver range, yet the dependencies still have a common compatible version.
+
+For example, the version of ember-cli-mirage we use has a pinned dependency on ember-lodash 0.0.9, while the rest of our dependency ecosystem is at 0.0.11.
+We know that the APIs are compatible and that the newer version (0.0.11) will work in mirage, so we tell yarn in our `package.json` that we want it to hoist 0.0.11:
+
+```
+"resolutions": {
+    "ember-lodash": "^0.0.11"
+}
+```
+
+See [https://yarnpkg.com/en/docs/selective-version-resolutions](https://yarnpkg.com/en/docs/selective-version-resolutions) for more information.
+
+*** Adding Dependency Lint Exceptions
+
+In the case where you have a dependency lint conflict that you are OK with, you can add exceptions to `config/dependency-lint.js` that tell the dependency lint utility not to fail when the provided conflicting versions are found.
+
+We really should only be adding exceptions for packages that are [build-specific packages](https://github.com/salsify/ember-cli-dependency-lint#build-time-addons) we discussed earlier such as `ember-cli-babel` and `ember-cli-htmlbars`.
+Several of these build-time addons are added to dependency-lints exception list [out of the box](https://github.com/salsify/ember-cli-dependency-lint#build-time-addons).
+
+For example here is a snapshot of the current items we have listed in the exceptions file.
+We can probably remove all of these entries in favor of "resolutions" (explained above).
+Resolutions would have the advantage of shrinking the node_modules tree down to the latest version of each of these packages.
+
+```
+module.exports = {
+    allowedVersions: {
+        'ember-cli-htmlbars-inline-precompile': '^0.3.11 || ^0.4.3',
+        'ember-getowner-polyfill': '^1.0.0 || ^2.0.0',
+        'ember-inflector': '^1.0.0 || ^2.0.0',
+        'ember-require-module': '~0.1.0',
+        'ember-runtime-enumerable-includes-polyfill': '^1.0.0 || ^2.0.0',
+        'ember-truth-helpers': '1.2.0 || 1.3.0 || 2.0.0',
+        'ember-wormhole': '~0.3.6 || ~0.5.1',
+        'ui-ember-slider': '0.3.8 || 0.4.1'
+    }
+};
+```
+
+** Upgrading
+
+Upgrading Dependencies can be challenging in a complex addon/engine ecosystem such as ours.
+Undergoing smooth upgrades are highly dependent on staying [SemVer](https://semver.org/) compliant with our addons and engines.
+
+See Xander's [Ember best practice talk on SemVer](https://apps.mypurecloud.com/s/#/1/3pc7xaburrgqzhgmsnxlajvhte) for more information.
+
+*** Minor/Patch
+
+When you are upgrading a minor patch of your addon or engine, the only 2 repositories you need to update are the addon or engine itself (obviously), and the lockfile of the parent app (web-directory).
+If the update is truly from a non-breaking change, then no code should need to be altered.
+This is true even when you have an addon dependency 4 levels deep, because yarn is likely hoisting it to the root.
+
+A common misconception is that when you update a dependency, you need to update all the lockfiles in between.
+This is not true on a minor or patch bump.  Yarn only consults the lock file of the repository its run in.
+
+When upgrading in general, avoid calling `yarn upgrade` without specifying a specific package to upgrade.
+In this case Yarn will try to grab the latest SemVer range compliant version of every dependency, and could break the application (libraries have been know to break SemVer behind our back).
+
+Instead, call `yarn upgrade my-cli-package`, or `yarn upgrade my-cli-package@1.0.0` if you know the version.
+
+*** Major
+
+Major upgrades still require a cascading dependency version bump, up the dependency tree.
+
+For example, we update `ember-purecloud-style` up a major version with a breaking change.
+`ember-purecloud-components` depends on `ember-purecloud-style`, while a lot of engines depend on `ember-purecloud-components`.
+Since its a breaking change, `ember-purecloud-components` needs to up is package.json to point at the new major version, as well as update its API calls.
+Likewise all the engines that depend on EPC need to update their reference to include the major bump as well as update APIs as necessary,
+and finally the web-directory app needs to update its dependencies to the new engine major package bumps.
+
+If that sounds like a pain to you, then your are correct... it is!
+
+That's why we have to be really judicious on when we include breaking changes and do everything in our power to avoid them.
+
+*** Leveraging Pre-Releases and Gates
+
+One effective way to implement a major bump change to a shared addon is use SemVer Pre-Release versioning on all of your repos that you are major bumping.
+
+You can publish these new "pre-release" versions straight out of your feature branches using [publish-npm-package](https://jenkins.ininica.com/job/publish-npm-package/).
+That way subsequent changes don't back up behind you while you are testing it out.
+
+For example, if you want to upgrade `ember-purecloud-components` from version 5.x to version 6.0.0, you could publish version 6.0.0-rc.1.  You could then create feature branches for each engine that updated their reference to `ember-purecloud-components` to the pre-release, while they themselves publish pre-releases.  In the end you'll have all your purecloud engines and addons publishing pre-releases while updating your web-directory feature branch accordingly.
+
+Now pair the feature branch updates we just made with updated engines and addons, with our build's ability to run gate builds based on specific check-ins.
+In this case we name our local feature branch `feature/gate/name-of-my-branch`.
+
+Naming the branch with `feature/gate` at the beginning tells the CI process to treat this branch differently.
+In our case it creates a deployed version of the UI from this branch, as well as runs the end-to-end gate tests.
+
+Once ready to merge with develop, you'll need to merge all the feature branches into their respective repo main branch, and once all official releases are published, can we merge our PR into web-directoy.
+
+In essence Pre-releases + feature gates = ❤️
+
+** Linking
+
+Linking repos to web-directory is useful in debugging issues that cross boundaries, but can cause you problems if you not careful.
+
+`yarn link` works by symlinking your project repo to web-directories node modules.
+As we learned earlier, the node module tree changes based on commonalities with other dependencies.
+Most of an addons dependencies should be "hoisted" out of its node_modules and into web-directory's root node_modules directory.
+The problem is that when you run yarn on your linked project, it fills up node_modules like it would a standalone project, and when the parent web-directory ember build runs, it may package inappropriate versions (if there are differences).
+
+The way we've been working around this is to remove all files from node_modules in the linked file.
+Then run web-directory's build.  It will probably fail saying that its missing a build related library in your linked addon.  Use `yarn add` to add that package and repeat until web-directory build properly.
+
+A best practice for engine/addon development in purecloud would be to keep your dependencies in line with web directory.
+That way you won't need the "delete node_modules" trick, because you know that ember cli will be taking a compatible version of dependency.
+
+The other option would be to temporarily update web-directory's package.json to point at the file system path to the project.
+The downside of this approach is that you need to re-run yarn whenever you make a change to the addon you are developing.

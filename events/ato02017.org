@@ -1,0 +1,42 @@
+
+* Making sense of Chatbots, NLP, and Conversations
+@jonasrosland
+{code} community
+
+** Alternate Reality Game
+*** Interactive narrative
+*** real world as platfrom
+*** different mediums (inc interactive chats)
+
+** Examples
+*** I love bees (halo 2)
+*** Archer
+*** Mr Robot
+*** killyourinternet
+
+** Site
+http://arg.jonasrosaland.com
+
+** What do you need?
+*** Platform to connect to channels (user's way in)
+*** service host to run bots
+*** sdk to support/handle conversations
+*** NLP Service
+
+** NLP
+*** Takes chats from the channel, and tries to understand languages based on knowledge base/data stores
+*** Using machine learning without learning it
+https://wit.ai
+https://dialogflow.com (api.ai)
+https://luis.ai
+Watson
+
+** bots
+meya.ai
+meya.ai <-> api.ai (dialogflow)
+smooch.io allows you to see how your bot's interactions over lots of different services/channels.
+demo: http://ato2017.jonasrosland.com/
+
+*** Summary
+http://jonasrosland.com/i-wrote-an-arg-part-2/ - the chatbot
+

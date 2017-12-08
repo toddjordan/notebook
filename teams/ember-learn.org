@@ -7,17 +7,6 @@
     :PROPERTIES:
     :ORDERED:  t
     :END:
-*** TODO learning team meeting                                        :teams:
-    SCHEDULED: <2016-12-01 Thu +1w>
-    - State "DONE"       from "TODO"       [2016-12-02 Fri 13:48]
-    - State "DONE"       from "TODO"       [2016-11-18 Fri 11:23]
-    - State "DONE"       from "TODO"       [2016-11-04 Fri 11:38]
-    - State "DONE"       from "TODO"       [2016-10-21 Fri 10:00]
-    :PROPERTIES:
-    :LAST_REPEAT: [2016-12-05 Mon 13:48]
-    :END:
-**** DONE Summarize Tutorial discussion
-     DEADLINE: <2016-11-05 Sat>
 
 ** Tutorial                                                        :tutorial:
 *** DONE Subroutes[3/3]
@@ -64,3 +53,15 @@ Wrapped into [[https://github.com/emberjs/guides/issues/1632][#1632 Improve Test
 *** DONE Get running locally
 
 *** DONE Task it out
+
+
+** May 11 meeting notes
+Deploying
+RM: Create a guides deployment page and have some cookbook-like examples
+Make the tutorial deploy section link, and maybe have a heroku deploy button
+
+** Prep for May 18 meeting
+*** TODO groom guides backlog
+*** TODO process super-rental PRs
+*** TODO api-doc handle hashes
+*** TODO merge async tutorial update

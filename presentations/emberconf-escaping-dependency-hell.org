@@ -1,0 +1,249 @@
+* Title 
+
+Escaping Dependency Hell
+By Example
+
+* Abstract
+
+Ember continues to be a powerful technology for building ambitious UIs. Ember's batteries-included approach, addon and engines infrastructure allow
+large companies to split large applications over multiple teams to create rich, cohesive user experiences.
+
+But there's a dark side to large-scale application development that front end web developers face regardless of what javascript web technology they choose.
+Complex application ecosystems can quickly get you into DEPENDENCY HELL.
+
+Are you thinking about using ember for a large, distributed project?  Are you already struggling with dependency headaches that are stealing time away from developing
+money making features?
+
+This talk will walk through some common dependency pitfalls and detail what teams do to successfully combat them.
+
+** Dependency Circles of Hell
+
+*** Dependants of Children (evil step children)
+
+**** Example: The constantly broken dependency
+
+**** npm dependency types, how they work, and which to choose
+
+**** installing children with the default blueprint
+
+*** Shared addon upgrade ripple effect (butterfly effect)
+
+**** Example: The "minor addon change" that caused the update/breakage of 10 repos
+
+**** semantic versioning and how to leverage it
+
+**** publishing release candidates
+
+*** Getting trolled by linking (trolls/gremlins)
+
+**** Example: You think you're testing your addon changes but you're not
+
+**** how linking works and how it can mess with you
+
+**** tips for effective linking
+
+**** monorepo
+
+** Tools for Survival (Crosses and Garlic)
+
+*** dependency-lint
+*** monorepo
+*** ember-try
+
+** Topics
+
+*** linking
+*** release candidates
+*** lockfiles
+*** monorepos
+*** npm namespaces
+*** semver
+*** npm dependencies
+*** declaring dependencies with blueprints
+
+** Examples
+
+*** Breaking your ecosystem (semver)
+*** Making sure your addon changes don't blow up your app (linking)
+*** Stress free linking (monrepo)
+*** Testing cross-addon changes while in feature branches (release candidates)
+*** Adding shared addon between child and parent (public dep)
+*** A shared addon that does broccoli stuff (dev dep + blueprint)
+*** major bumping a public dependency
+*** how even a 3rd party addon dependency bump can kill our project.
+
+.* Outline
+
+** 3 Circles of Dependency Hell
+
+*** Dependents of Children (evil step children)
+
+**** Example: The constantly broken dependency
+
+**** npm dependency types, how they work, and which to choose
+
+**** installing children with the default blueprint
+
+**** Incompatibles
+
+**** Example: ember-lodash in ember-cli-mirage
+
+resolutions section
+
+*** Shared addon upgrade ripple effect (butterfly effect)
+
+**** Example: The "minor addon change" that caused the update/breakage of 10 repos
+
+**** semantic versioning and how to leverage it
+
+**** what breaking changes are and how to avoid them
+
+**** publishing release candidates to avoid feature backup
+
+**** duplicates: https://github.com/yarnpkg/yarn/issues/3967
+
+*** Getting trolled by linking (trolls/gremlins)
+
+**** Example: You think you're testing your addon changes but you're not
+
+**** how linking works and how it can mess with you
+
+**** tips for effective linking
+
+**** monorepo
+
+** Q&A
+
+*** Question 1
+ Hi, thanks for submitting a proposal! 
+ Can you tell me about any dependency strategies specific to Ember that might be part of your talk? 
+ i.e. has using ember addons with delayed base library version upgrades caused you issues? 
+ How did you decide when to use plain old npm vs emberified packages? 
+ This is a thing that we all struggle with, but since it's such a common topic, 
+ think of what you could do a deeper dive on so that it's not too general.
+
+ Hi!  Yes.  The examples will all be actual examples we experienced in ember projects.
+ We have a Engine-based ecosystem with engines, shared addons, as well as 3rd party addons and npm dependencies.
+ The examples will be very specific to this ecosystem.  
+
+ For example, for the "constantly broken dependency" case, we've had a couple of cases like this.
+ D3 is one such example.  One of our shared addons uses ember-d3, and we would constantly get the following error:
+ ```
+ WARNING: [ember-d3] d3 sub module: "d3-array" is not installed, please reinstall d3
+ WARNING: [ember-d3] d3 sub module: "d3-collection" is not installed, please reinstall d3
+ WARNING: [ember-d3] d3 sub module: "d3-color" is not installed, please reinstall d3
+ WARNING: [ember-d3] d3 sub module: "d3-dispatch" is not installed, please reinstall d3
+ WARNING: [ember-d3] d3 sub module: "d3-drag" is not installed, please reinstall d3
+ ```
+ It turned out that the ember-d3 npm package did tree shaking on various d3 aspects, 
+ and the code that determined packaging needed to be local to the build to work.
+ We were declaring d3 as a public dependency of the shared addon, relying on it to "bubble up", 
+ but because our shared addon is nested several layers deep, the build would often fail depending on hoisting position.
+ In the end we had to make d3 a dev dependency on each engine and the app,
+ essentially all the way up the tree, so that it could be consistently found during build processes.
+
+ This is a good segway to the differences between npm dependency types, public, dev, and peer, 
+ and how the build process can affect the decision on what to choose.
+ It is also a good demonstration of addon blueprints,
+ and how you can specify that a parent should install a specific package.
+
+ And that's circle one.  
+
+** Research
+
+*** Linking
+"Symlink a package folder during development."
+https://yarnpkg.com/lang/en/docs/cli/link/
+
+Determinism
+https://yarnpkg.com/blog/2017/05/31/determinism/
+
+What is Hoisting?
+- Location of packages, based on project dependencies
+- Depends on dependencies and dependencies of dependencies
+
+Why do my projects change when linking?
+when not linked, only hoisted packages show up in node_modules of dependents.
+when linked all of the dependent's dependencies could be in node_modules, 
+which could create situations where your addon or engine is using different
+versions of dependencies than they would in the real-world
+
+How to use linking then?
+Ensure packages are compatible.
+
+Intro to JavaScript Package Managers
+https://medium.freecodecamp.org/javascript-package-managers-101-9afd926add0a
+
+“To make it more clear, 
+your package.json states “what I want” for the project whereas your lockfile says 
+“what I had” in terms of dependencies. — Dan Abramov
+
+Yarn uses package plus lockfile to determine hoisting
+
+Resolutions
+https://github.com/yarnpkg/rfcs/blob/master/implemented/0000-selective-versions-resolutions.md
+
+** Presentation to Genesys
+
+*** Escaping Dependency Hell - a Survival Guide
+
+*** We have a complex tree of dependencies
+[[file:images/yarn-tree.gif][Yarn Tree]]
+
+*** How the dependencies are built into ember
+
+1. yarn creates a node_modules hierarchy
+2. ember-cli traverses the package tree and builds/concats into vendor.js
+- if there are multiple versions of a dependency then ember will merge all package directories together, 
+installing one over the top of the other.
+
+*** How yarn handles resolves dependencies
+
+- Dependencies: Yarn "promotes" these dependencies to consumers
+  - Optimally, all dependencies would be "flat", meaning installed under the app's root "node_modules"
+- When there's a version conflict, yarn keeps the version under the 
+- Yarn determinism is guaranteed for a given version
+
+*** Debugging
+
+- Yarn list is your friend, so is dependency-lint
+  - only add exceptions for compatible libraries, or packages not compiled into application.
+- Use "resolutions" if there is a conflict where you know that a given package will work with either version.
+
+*** How ember cli handles dependencies
+
+*** d3 example
+
+*** Upgrading shared dependencies
+
+**** Minor/Patch Bumps
+
+- addon lockfiles aren't consulted by the parent app, only package.json, 
+so minor/patch bumps only need an update from the parent app (and the addon itself)
+- Most addons need to be in the same version range (exceptions ember-cli-babel ember-cli-htmlbars)
+
+*** EPC
+
+*** Major Upgrades
+
+- Still cascading releases.
+- Taking advantage of pre-releases to test
+- pre-releases + feature gates = ❤️
+
+*** Linking
+
+- Uses symlinks, so the node_modules tree can end up different
+  - Usually works to delete node_modules directory, but build will break if certain libs missing
+  - Maybe copying?
+
+*** Pro Tips
+
+- 
+** Resources
+https://medium.com/@tomlagier/leveraging-internal-npm-modules-in-a-small-ember-shop-9802c89f5e54
+
+** Notes
+
+- Peer Dependencies: only works with certain versions.
+- Resolutions: Way to "flatten" dependency tree for specific packages.  Ensures only one.
+  - local installation takes precedent

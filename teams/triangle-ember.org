@@ -7,7 +7,7 @@ https://www.meetup.com/Triangle-Ember/events/235487481/
 ** DONE Hack night January
 ** DONE Meetup Early December
 ** TODO May Meetup at InIn
-** TODO Joint Meetup with Ruby (Jun)
+** DONE Joint Meetup with Ruby (Jun)
 Location ?
 - [ ] Follow up with Brandon
 ** TODO Joint Meetup with TriJS (TBD)

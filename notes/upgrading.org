@@ -1,0 +1,41 @@
+* Upgrading Ember
+
+** Getting the New Release
+
+1. Pull the latest code from the develop branch, and create a new branch called `feature/gate/upgrade-to-ember-<dash separated version>`
+   Example: `git checkout -b feature/gate/upgrade-to-ember-2-17`
+2. Find the version of Ember you want to upgrade to by going to [https://github.com/ember-cli/ember-cli/releases](https://github.com/ember-cli/ember-cli/releases)
+3. Follow the instructions for the release, or use [ember-cli-update](https://github.com/kellyselden/ember-cli-update)
+   If you go with ember-cli-update, make sure its latest version is installed via `yarn upgrade ember-cli-upgrade`,
+   and then run `ember upgrade` from the command line.
+   The utility will treat the updated blueprint run as a git merge.  Use `git mergetool` to resolve differences.
+4. Once the upgrade process is complete, run the test suite and fix any errors that arise.
+   Between build and tests, and starting the server locally (`ember s`), you should shake out a majority of upgrade issues.
+5. After getting a clean build and test suite, push your upgrade changes to your branch.
+6. Because we pre-pended our branch name with `feature/gate`,
+   our branch will go through a separate CI process that will result in a deployed application and an end-to-end test automation run.
+   - Feature gate CI build: [https://jenkins.ininica.com/job/build-web-directory-features/](https://jenkins.ininica.com/job/build-web-directory-features/)
+   - Test automation results: [https://jenkins.ininica.com/job/webui-test-tca-business_critical-feature/](https://jenkins.ininica.com/job/webui-test-tca-business_critical-feature/)
+
+__Note: An alternative to `ember-cli-update` is to run the steps found in the ember CLI release page for a given release.  See [https://github.com/ember-cli/ember-cli/releases/tag/v2.17.0](https://github.com/ember-cli/ember-cli/releases/tag/v2.17.0) as an example__
+
+** Handling Deprecations
+
+Every new Ember release brings additional deprecations of code.
+To find the new deprecations for a given release consult [the Ember deprecations guide](https://emberjs.com/deprecations).
+
+You may notice a bunch of new deprecation warnings when you start the development server or run tests.
+You can manage the display of these warnings by using Ember's [deprecation workflow handling](https://guides.emberjs.com/current/configuring-ember/handling-deprecations/).
+
+Also, consult the [release blog post](https://emberjs.com/blog) for information on code that has been sunset or changed in the new release.
+
+** When and how to Upgrade Dependencies
+
+All PureCloud Addons should be running ember try on current and beta.
+If these two build are passing for an addon/engine, then there's a chance that you will not need to make changes to that addon.
+
+If a new Ember release has caused a breaking change in an addon or addons,
+you may want deliver the fix through a major version bump of the dependency,
+so that you can test the addon update against your ember upgrade branch.
+
+

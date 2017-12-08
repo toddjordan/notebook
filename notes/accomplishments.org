@@ -1,0 +1,37 @@
+* Ember Professional Experience
+
+** Introduced ember-try execution to addons and engines
+
+** Introduced rfc process (like ember)
+
+** Introduced process for ember and addon upgrades
+*** Semver strategy
+
+** Introduced test suite as part of build (pass/fail)
+
+** Introduced acceptance testing to legacy codebase
+*** Debugged and cleard up leaking async timers and functions
+*** created an addon to trace leaky async
+*** added ember-concurrency
+
+* Ember Community Experience
+
+** Spoke at emberconf, gemconf, local meetup
+
+** Helped organize triangle ember meetup
+
+** Contributed to apidoc
+
+** Contributed to ember tutorial
+
+* Software Project Experience
+
+** Dev Lead for Large Cash Management Project
+*** Payment forms for 100+ countries
+
+** UI team lead on multiple projects
+*** Privacy, identity mgmnt, role management
+*** Lots of legacy test experience
+
+** Led craftmanship meetings at DB, IBM
+

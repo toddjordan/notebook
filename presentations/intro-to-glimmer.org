@@ -1,0 +1,33 @@
+* Introduction to GlimmerJS
+** Who Am I
+** Agenda
+** What is Glimmer?
+*** Extracted from Ember's rendering engine
+** How Does it Compare?
+*** Component essentials
+** Where is it Going?
+*** "NPM install your way from glimmer to ember "(Include App Complexity image)
+** Examples
+** Demo
+*** create project
+*** create new component (show text)
+*** create data
+*** create loop
+*** pass attrs
+*** add button
+*** add if
+*** add actions
+*** update sass
+*** add computed
+*** add to html page
+** Resources
+*** http://slides.com/ebryn/glimmer-js#
+*** https://speakerdeck.com/locks/glimmer-dot-js-3-ember-dot-js
+*** https://hackernoon.com/why-im-excited-about-glimmerjs-3631bd0c95c4
+*** http://yehudakatz.com/2017/04/05/the-glimmer-vm-boots-fast-and-stays-fast/
+*** https://emberjs.com/blog/2017/04/05/emberconf-2017-state-of-the-union.html#toc_introducing-glimmer-js
+*** https://github.com/ericlifka/pxlr-sprite-editor
+*** https://github.com/t-sauer/Glimmeroids
+*** https://github.com/glimmerjs/todomvc-demo
+*** https://github.com/erkarl/tomster-summoner
+*** https://github.com/glimmerjs/glimmer-demos

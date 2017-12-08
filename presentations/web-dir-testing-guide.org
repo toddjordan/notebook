@@ -1,0 +1,72 @@
+
+* Test Pyramid
+
+* Test at the lowest level of the pyramid that validates the test.
+
+* Test Pyramid Levels + What 
+
+* Acceptance What it does
+
+** Very good talk by Mark https://apps.mypurecloud.com/s/#/1/m5ulbrmjdvcphcrg6l44bwznem
+
+* How Async works in acceptance
+
+** Async Helpers 
+
+*** visit, click, fillIn
+
+** Async "waits" 
+
+*** routes, timers, ajax, waiters
+
+*** pause on a wait to see the logic
+
+* Using Mirage
+
+** Routes, db, schema
+
+** Accomodating Multi-user
+
+** recording data flow
+
+** static responses -> factories
+
+** Varying data per test
+
+
+
+
+* Creating a new Acceptance Test
+
+** ember g acceptance-test <name>
+
+* Running Tests
+
+** npm test
+
+** npm run acceptance
+
+* Debugging Tests
+
+** pauseTest()/resumeTest()
+
+** breakpoints
+
+** mirage logs
+
+** stuckness - pause button, async debug tools
+* Keeping Acceptance Tests Working
+
+** For long running async tests, provide an alternative that can be injected at test time.
+
+*** Ember.testing
+
+*** reopen to provide alternate impls
+
+* For Engines
+
+** Mounting an engine in dummy
+
+** defining dependant services
+
+*** mocking them in dummy resolver (or by creating them)

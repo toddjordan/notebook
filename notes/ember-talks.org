@@ -1,0 +1,22 @@
+** Making Titanic Ember Apps feel Tiny (Marten Schilestra)
+https://www.youtube.com/watch?v=KgJ4mW3BtoA
+http://webpagetest.org
+
+App Shell: render a screen while loading javascript
+link rel="preload" to preload css (chrome/opera or loadCSS polyfill)
+
+reducing javascript: service worker
+data: indexedDB
+
+PRPL: Push, Render, Pre-cache, Lazy Load
+
+** Dissecting an Ember CLI Build (Estelle Dublois)
+
+source -> transform nodes
+source nodes read()
+transfrom nodes build()
+
+plugins implement Plugin.prototype.build()
+
+adding assets: treeFor*
+modifying existing assets: preprocess/postprocess

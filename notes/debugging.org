@@ -1,0 +1,99 @@
+* Asynchronous Process Debugging
+
+The root cause of many hard to solve bugs has to do with asynchronous processes.
+
+** Understanding Backburner
+
+[Backburner](https://github.com/BackburnerJS/backburner.js?files=1) is Ember's implementation of a task scheduler.
+It schedules functions in a series of priority queues to ensure efficient processing of asynchronous tasks.
+It also comes with an API that allows programmers to control what queue their code gets put into and when to run it.
+See the [ember runloop API docs](https://emberjs.com/api/ember/2.17/modules/@ember%2Frunloop) for details.
+
+*** Backburner Resources:
+
+- [Genesys/InIn Ember Best Practices Session on Runloop](https://apps.mypurecloud.com/s/#/1/6igpwjt765djzhp6tzcwf4vldi)
+  - [Slides](https://toddjordan.github.io/ember-run-loop-best-practices/)
+- [Runloop Section in Ember Guides](http://guides.emberjs.com/v2.11.0/applications/run-loop/)
+- [Beginners Guide to the Ember Run Loop](https://teamgaslight.com/blog/a-beginners-guide-to-the-ember-run-loop)
+- [Ember Run Loop Handbook](https://github.com/eoinkelly/ember-runloop-handbook)
+- [The Ember Run Loop at SLC JS](https://youtu.be/G4DdNMLubgQ)
+
+** Debugging Backburner Timers
+
+If you have an application or engine that uses Ember Purecloud Components, then you get a set of debugging tools for finding out what is on the backburner timer queue.
+This is useful for debugging long running tests, as well as "leaking" timers.
+
+*** Enabling Debugging
+
+To turn on Backburner debugging when running your tests or your development server, you will need to set the following environment variable: `ASYNC_DEBUG=true`.
+
+This will make a couple of functions available to you in the runtime console.
+
+*** Console Functions
+
+The following functions are available to run from the console:
+
+- `Orgspan.listAsync()` dumps the currently active timer functions and promises to tables in the console.
+- `Orgspan.promiseStackFor(id)` lets you take the promise ID you get from running `listAsync` and will give you a stack trace letting you drill into the code for that given promise.
+
+![Orgspan.listAsync()](images/listAsync.png)
+
+These functions are set up in an ember initializer, so they are only available when running the development server (`ember s`) or acceptance tests (by pausing execution via a breakpoint or `pauseTest()`).
+
+*** Testcase dumps
+
+When `ASYNC_DEBUG=true` is provided, running tests will dump a table of running processes in the beforeEach hook.
+That way you can see what asynchronous timers and promises have "leaked" into the test.
+
+WARNING: Lists of leaking promises can get rather long.
+If you want to isolate the tables to only show backburner timers, then use `BACKBURNER_DEBUG=true` instead of `ASYNC_DEBUG=true`.
+
+*** Finding Out Where the Timers Originate From
+
+In addition to `ASYNC_DEBUG=true`, you can set `BACKBURNER_STACKS=true` to show stack traces of async functions as they are added to the timer queue.
+By default any timer that will pop in 4 seconds or longer will be shown on the console.
+You may customize the amount of seconds of timer duration that will print to the console by providing the environment variable `BACKBURNER_DEBUG_SECS=<number>`.
+Setting the value to 0 will show the stacks of all additions to the timer queue.
+
+![Backburner Stacks](images/backburnerStacks.png)
+
+## Debugging Promises
+
+At any time during the running of a development server or an acceptance test, you can run the command `Orgspan.listAsync()` to dump the table of active promises (and timers), provided you've enabled `ASYNC_DEBUG=true`.
+Once you have the id of a specific promise, you can lookup that promise via the `Orgspan.promiseStackFor(id)` function.
+
+![Orgspan.promiseStackFor(id)](images/promiseStackFor.png)
+
+** Debugging Hanging and Slow Testcases
+
+If a timer is running that does not complete, or is recursive.  Tests will often wait on that timer to complete, resulting in slow or "hung" test cases.
+Debugging timers is often difficult because you don't have a good idea from where in the system they come.
+
+The debug tools above give you a way to figure out what is hanging up the test.
+
+Below is a workflow you can use to find an offending timer:
+
+1. If you run into a hung test, push the pause button on the source panel of Chrome developer tools.
+2. The debugger will likely stop in a test waiter.
+   - You'll notice that the waiter function has a series of if statements.
+   - If you step through the if statements, the first statement that is true is the reason for the hang.
+   - If the statement is the timer check, then you've got a timer issue.
+3. Kill your test process and rerun the test that is hung with `ASYNC_DEBUG=true` and `BACKBURNER_STACKS=true`.
+   - An example for mac is `ASYNC_DEBUG=true BACKBURNER_STACKS=true ember t -s -l Chrome --f "should do a thing"`
+   - The command tells ember to run the test that matches the filter string, and runs only in Chrome.
+4. When the test runs, open the console and look for stack traces.
+   - You may notice a stack trace or multiple stack traces during the test.
+   - If the test hangs and there are no stack traces, you may need to adjust the number for seconds the debug tools show stacks for.
+     - By default it only shows at least 4 second timers, but there may be a short, recursive timer running.
+     - Set the number of seconds by `BACKBURNER_DEBUG_SECS=<number>`.  Setting it to 0 will show stacks for all timers.
+   - If the test runs quickly, its likely that a previous test is starting the hung timer.
+     - In this case you will need to run the previous several test before the hung test.
+     - The simplist way to run several specific tests together is  by checking those tests in the module dropdown of the testem UI.
+5. Look for the first instance of web-directory mentioned in the stack and that's the likely offender. You can click on the file and see the source.
+
+To fix a hung timer in a test, you have several options.
+
+1. First make sure that the timer is cleaned when the object is destroyed (by running `run.cancel` or using ember-concurrency).
+2. You can disable the timer for tests by wrapping it in an `if (!Ember.testing)`.  The downside of this approach is that it makes it a bit harder to test that timer logic, (though you could extract the logic into a method and test it via a unit test).
+3. In the case of a long timer, you can reduce the amount of time that the timer takes to execute in test mode
+4. You can provide a flag to disable/reduce the timer from the test.  For an unit test you can provide this as a property to the subject call, while for an acceptance test you can reopen the class using Ember [reopenClass](https://guides.emberjs.com/v2.17.0/object-model/reopening-classes-and-instances/) function
